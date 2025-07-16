@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://b67r7hqfxcqul"]
+
+[ext_resource type="Script" uid="uid://do78dcr355fkx" path="res://scene/actions/fireball_action.gd" id="1_eoakr"]
+
+[node name="FireballAction" type="Node"]
+script = ExtResource("1_eoakr")
+action_id = "fireball_action"
+action_name = "Fireball"
+grid_color = Color(0.35026, 0.00103038, 0.860838, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

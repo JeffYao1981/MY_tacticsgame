@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://doj66q6m8rpx5"]
+
+[ext_resource type="Script" uid="uid://hhgelhfwrfw7" path="res://scene/actions/bow_action.gd" id="1_cke65"]
+
+[node name="BowAction" type="Node"]
+script = ExtResource("1_cke65")
+action_id = "bow_action"
+action_name = "Bow"
+grid_color = Color(0.809523, 0.809524, 0, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

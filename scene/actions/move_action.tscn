@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1t6h05nlcan4"]
+
+[ext_resource type="Script" uid="uid://cto14lxny2tb2" path="res://scene/actions/move_action.gd" id="1_0wdbv"]
+
+[node name="MoveAction" type="Node"]
+script = ExtResource("1_0wdbv")
+action_id = "move_action"
+action_name = "Move"
+grid_color = Color(0.341574, 0.795762, 0, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

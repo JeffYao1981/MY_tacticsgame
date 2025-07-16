@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bea8cf5degeby"]
+
+[ext_resource type="Script" uid="uid://dit6swn3c62lm" path="res://scene/actions/sword_action.gd" id="1_2lrjr"]
+
+[node name="SowrdAction" type="Node"]
+script = ExtResource("1_2lrjr")
+action_id = "sword_action"
+action_name = "Sword"
+grid_color = Color(0.738119, 0.285517, 0.147214, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

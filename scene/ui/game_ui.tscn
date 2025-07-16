@@ -1,0 +1,25 @@
+[gd_scene load_steps=3 format=3 uid="uid://vcq027y1uk84"]
+
+[ext_resource type="Script" uid="uid://cx2op28btrack" path="res://scene/ui/unit_actions_ui.gd" id="1_xneuj"]
+[ext_resource type="PackedScene" uid="uid://d3kxmkv86rhke" path="res://scene/ui/action_card_ui.tscn" id="2_5ty5x"]
+
+[node name="GameUI" type="CanvasLayer"]
+
+[node name="UnitActionsUI" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_bottom = 16
+script = ExtResource("1_xneuj")
+action_card_ui_scene = ExtResource("2_5ty5x")
+
+[node name="MarginContainer" type="MarginContainer" parent="UnitActionsUI"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+
+[node name="ActionContainer" type="HBoxContainer" parent="UnitActionsUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
