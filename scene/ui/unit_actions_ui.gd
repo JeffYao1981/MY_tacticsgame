@@ -6,14 +6,22 @@ class_name UnitActionsUI
 
 @onready var action_container: HBoxContainer = $MarginContainer/ActionContainer
 
+var selected_unit: Unit
 
 
 func _ready() -> void:
-	call_deferred("updata_unit_action_ui")
+	PlayerActionManager.unit_selected.connect(on_unit_selected)
 
+
+func on_unit_selected(unit:Unit) ->void:
+	if selected_unit == unit :
+		return
+	
+	selected_unit = unit
+	updata_unit_action_ui()
 
 func updata_unit_action_ui() ->void:
-	var actions_manager:ActionManager = get_tree().current_scene.get_node("Unit").get_node("ActionsManager")
+	var actions_manager:ActionManager = selected_unit.actions_manager
 	
 	for node in action_container.get_children():
 		node.queue_free()

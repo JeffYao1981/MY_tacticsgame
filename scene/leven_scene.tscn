@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=4 uid="uid://nrsx7ey1xhyq"]
+[gd_scene load_steps=9 format=4 uid="uid://nrsx7ey1xhyq"]
 
 [ext_resource type="Script" uid="uid://cvs5118wst686" path="res://scene/leven_scene.gd" id="1_gbvrf"]
 [ext_resource type="PackedScene" uid="uid://vcq027y1uk84" path="res://scene/ui/game_ui.tscn" id="1_j5dih"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://s5otcvaf7ure" path="res://scene/ui/grid_indicator.tscn" id="3_042up"]
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/unit/unit.tscn" id="4_042up"]
 [ext_resource type="TileSet" uid="uid://daolc8ryv5c4k" path="res://resources/alonvisuzlize_tile_set.tres" id="5_8tfcn"]
+[ext_resource type="PackedScene" uid="uid://dka6r1imhxww6" path="res://scene/unit/unit2.tscn" id="8_t6xhd"]
 
 [node name="LevelScene" type="Node"]
 script = ExtResource("1_gbvrf")
@@ -23,8 +24,11 @@ script = ExtResource("2_0atw2")
 position = Vector2(4, 0)
 tile_set = ExtResource("5_8tfcn")
 
+[node name="GridIndicator" parent="." instance=ExtResource("3_042up")]
+position = Vector2(4, 0)
+
 [node name="Unit" parent="." instance=ExtResource("4_042up")]
 position = Vector2(180, 272)
 
-[node name="GridIndicator" parent="." instance=ExtResource("3_042up")]
-position = Vector2(4, 0)
+[node name="Unit2" parent="." instance=ExtResource("8_t6xhd")]
+position = Vector2(239, 209)

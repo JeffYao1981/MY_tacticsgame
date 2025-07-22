@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 GridManager="*res://scene/autoloads/grid_manager.tscn"
 PlayerActionManager="*res://scene/autoloads/player_action_manager.tscn"
+GameManager="*res://scene/autoloads/game_manager.tscn"
 
 [display]
 
@@ -27,6 +28,11 @@ window/size/viewport_height=640
 window/size/window_width_override=720
 window/size/window_height_override=1280
 window/stretch/mode="viewport"
+
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
 
 [input]
 

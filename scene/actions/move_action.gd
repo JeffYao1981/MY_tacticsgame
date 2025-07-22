@@ -10,6 +10,10 @@ func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->v
 	
 	path = GridManager.get_nav_world_path(unit.grid_position,target_gird_position)
 	
+	GridManager.set_grid_walkable(unit.grid_position,true)
+	GridManager.set_grid_occupied(unit.grid_position,null)
+	GridManager.set_grid_walkable(target_gird_position,false)
+	GridManager.set_grid_occupied(target_gird_position,unit)
 	
 func move(target_global_position:Vector2,delta: float) -> void:
 	unit.global_position = unit.global_position.move_toward(target_global_position,move_speed*delta)

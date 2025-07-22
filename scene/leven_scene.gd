@@ -5,6 +5,14 @@ extends Node
 
 func _ready() -> void:
 	GridManager.visual_layer = visual_layer
-	var action = get_tree().current_scene.get_node("Unit").actions_manager.get_action("move_action")
-	PlayerActionManager.set_selected_action(action)
 	
+	for unit: Unit in GameManager.player_units:
+		GridManager.set_grid_walkable(unit.grid_position,false)
+		GridManager.set_grid_occupied(unit.grid_position,unit)
+	for unit:Unit in GameManager.enemy_units:
+		GridManager.set_grid_walkable(unit.grid_position,false)
+		GridManager.set_grid_occupied(unit.grid_position,unit)
+	
+	if not GameManager.player_units.is_empty():
+		var unit:Unit = GameManager.player_units[0]
+		PlayerActionManager.set_selected_unit(unit)

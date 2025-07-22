@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4v4omxy7xpxw"]
+[gd_scene load_steps=10 format=3 uid="uid://c4v4omxy7xpxw"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/unit/unit.gd" id="1_fmkjs"]
 [ext_resource type="Texture2D" uid="uid://um66jojjrn7g" path="res://icon.svg" id="2_422ul"]
@@ -7,6 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://bea8cf5degeby" path="res://scene/actions/sword_action.tscn" id="5_855lp"]
 [ext_resource type="PackedScene" uid="uid://doj66q6m8rpx5" path="res://scene/actions/bow_action.tscn" id="6_0o3le"]
 [ext_resource type="PackedScene" uid="uid://b67r7hqfxcqul" path="res://scene/actions/fireball_action.tscn" id="7_glnlk"]
+[ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/unit/unit_area.gd" id="8_0o3le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
+size = Vector2(32, 32)
 
 [node name="Unit" type="Node2D"]
 script = ExtResource("1_fmkjs")
@@ -24,3 +28,9 @@ texture = ExtResource("2_422ul")
 [node name="BowAction" parent="ActionsManager" instance=ExtResource("6_0o3le")]
 
 [node name="FireballAction" parent="ActionsManager" instance=ExtResource("7_glnlk")]
+
+[node name="UnitArea" type="Area2D" parent="."]
+script = ExtResource("8_0o3le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnitArea"]
+shape = SubResource("RectangleShape2D_glnlk")
