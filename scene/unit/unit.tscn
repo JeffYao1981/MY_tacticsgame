@@ -7,7 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bea8cf5degeby" path="res://scene/actions/sword_action.tscn" id="5_855lp"]
 [ext_resource type="PackedScene" uid="uid://doj66q6m8rpx5" path="res://scene/actions/bow_action.tscn" id="6_0o3le"]
 [ext_resource type="PackedScene" uid="uid://b67r7hqfxcqul" path="res://scene/actions/fireball_action.tscn" id="7_glnlk"]
-[ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/unit/unit_area.gd" id="8_0o3le"]
+[ext_resource type="Script" path="res://scene/unit/unit_area.gd" id="8_0o3le"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
 size = Vector2(32, 32)

@@ -10,7 +10,7 @@
 [ext_resource type="Script" uid="uid://nxtt1vjiytn5" path="res://scene/state_machine/player_turn_state.gd" id="4_owm7n"]
 [ext_resource type="TileSet" uid="uid://daolc8ryv5c4k" path="res://resources/alonvisuzlize_tile_set.tres" id="5_8tfcn"]
 [ext_resource type="Script" uid="uid://vi6h0wrcr6f6" path="res://scene/state_machine/enemy_turn_state.gd" id="5_pj1h8"]
-[ext_resource type="PackedScene" uid="uid://dka6r1imhxww6" path="res://scene/unit/unit2.tscn" id="8_t6xhd"]
+[ext_resource type="PackedScene" path="res://scene/unit/unit2.tscn" id="8_t6xhd"]
 
 [node name="LevelScene" type="Node"]
 script = ExtResource("1_gbvrf")
