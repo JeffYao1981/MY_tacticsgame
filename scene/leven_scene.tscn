@@ -47,4 +47,4 @@ position = Vector2(4, 0)
 position = Vector2(180, 272)
 
 [node name="Unit2" parent="." instance=ExtResource("8_t6xhd")]
-position = Vector2(239, 209)
+position = Vector2(240, 208)
