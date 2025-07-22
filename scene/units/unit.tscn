@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://c4v4omxy7xpxw"]
+
+[ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_fmkjs"]
+[ext_resource type="SpriteFrames" uid="uid://cpp87stm7mexi" path="res://resources/animations/player_animations/knight_animation.tres" id="2_3fp00"]
+[ext_resource type="PackedScene" uid="uid://c1v06nm46bxvf" path="res://scene/Managers/actions_manager.tscn" id="3_qt1e6"]
+[ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="4_3j4cu"]
+[ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/units/unit_area.gd" id="8_0o3le"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
+size = Vector2(32, 32)
+
+[node name="Unit" type="Node2D"]
+script = ExtResource("1_fmkjs")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+scale = Vector2(1.33333, 1.33333)
+sprite_frames = ExtResource("2_3fp00")
+animation = &"die"
+autoplay = "idle"
+
+[node name="WeaponSlot" type="Node2D" parent="AnimatedSprite2D"]
+position = Vector2(3.00001, 6.00001)
+scale = Vector2(0.750002, 0.750002)
+
+[node name="ActionsManager" parent="." instance=ExtResource("3_qt1e6")]
+
+[node name="MoveAction" parent="ActionsManager" instance=ExtResource("4_3j4cu")]
+
+[node name="UnitArea" type="Area2D" parent="."]
+script = ExtResource("8_0o3le")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="UnitArea"]
+shape = SubResource("RectangleShape2D_glnlk")

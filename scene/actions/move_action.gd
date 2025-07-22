@@ -15,7 +15,14 @@ func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->v
 	GridManager.set_grid_walkable(target_gird_position,false)
 	GridManager.set_grid_occupied(target_gird_position,unit)
 	
+	unit.animated_sprite_2d.play("run")
+	
 func move(target_global_position:Vector2,delta: float) -> void:
+	if unit.global_position.x > target_global_position.x:
+		unit.animated_sprite_2d.scale = Vector2(-1.333,1.333)
+		print("翻转")
+	if unit.global_position.x < target_global_position.x:
+		unit.animated_sprite_2d.scale = Vector2(1.333,1.333)
 	unit.global_position = unit.global_position.move_toward(target_global_position,move_speed*delta)
 	
 		
@@ -28,6 +35,7 @@ func _process(delta: float) -> void:
 			path.remove_at(0)
 			GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
 	else :
+		unit.animated_sprite_2d.play("idle")
 		finish_action()
 
 

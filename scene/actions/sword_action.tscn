@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://bea8cf5degeby"]
+[gd_scene load_steps=3 format=3 uid="uid://bea8cf5degeby"]
 
 [ext_resource type="Script" uid="uid://dit6swn3c62lm" path="res://scene/actions/sword_action.gd" id="1_2lrjr"]
+[ext_resource type="PackedScene" uid="uid://beqjyyr60n2ll" path="res://scene/weapons/sword.tscn" id="2_xworu"]
 
 [node name="SowrdAction" type="Node"]
 script = ExtResource("1_2lrjr")
+sword_scene = ExtResource("2_xworu")
 action_id = "sword_action"
 action_name = "Sword"
 grid_color = Color(0.738119, 0.285517, 0.147214, 1)

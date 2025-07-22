@@ -1,6 +1,8 @@
 extends Node2D
 class_name Unit
 @onready var unit_area: Area2D = $UnitArea
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var weapon_slot: Node2D = $AnimatedSprite2D/WeaponSlot
 
 
 
@@ -18,7 +20,8 @@ func _ready() -> void:
 func on_unit_selected() ->void:
 	PlayerActionManager.set_selected_unit(self)
 	
-	
+func take_damage(damage_amount:int) -> void:
+	print(name + "受到了"+ str(damage_amount)+"点伤害")
 	
 	
 	
