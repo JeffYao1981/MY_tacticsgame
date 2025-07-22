@@ -8,12 +8,7 @@ var selected_action:BaseAction
 var selected_unit: Unit
 
 
-func _unhandled_input(event: InputEvent) -> void:
-	if is_performing_action:
-		return
-	#按下按键，mouse_grid_position=鼠标的索引坐标，将正在performing（履行）赋值为是，指向moveaction状态，调用其函数start_action,传参数：鼠标所在的网格索引，on_action_finished函数）	
-	if event.is_action_pressed("left_mouse_click"):
-		try_perform_selected_action()
+
 
 func set_selected_unit(unit:Unit) ->void:
 	if is_performing_action:

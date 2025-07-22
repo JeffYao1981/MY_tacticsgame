@@ -1,18 +1,34 @@
-[gd_scene load_steps=9 format=4 uid="uid://nrsx7ey1xhyq"]
+[gd_scene load_steps=12 format=4 uid="uid://nrsx7ey1xhyq"]
 
 [ext_resource type="Script" uid="uid://cvs5118wst686" path="res://scene/leven_scene.gd" id="1_gbvrf"]
 [ext_resource type="PackedScene" uid="uid://vcq027y1uk84" path="res://scene/ui/game_ui.tscn" id="1_j5dih"]
 [ext_resource type="TileSet" uid="uid://dvnjfw8hq54dq" path="res://resources/nav_tile_set.tres" id="1_yjwhl"]
 [ext_resource type="Script" uid="uid://bukm0ao8l038x" path="res://grids/nav_layer.gd" id="2_0atw2"]
 [ext_resource type="PackedScene" uid="uid://s5otcvaf7ure" path="res://scene/ui/grid_indicator.tscn" id="3_042up"]
+[ext_resource type="PackedScene" uid="uid://drdk8u8r4jhi2" path="res://scene/state_machine/state_machine.tscn" id="3_pj1h8"]
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/unit/unit.tscn" id="4_042up"]
+[ext_resource type="Script" uid="uid://nxtt1vjiytn5" path="res://scene/state_machine/player_turn_state.gd" id="4_owm7n"]
 [ext_resource type="TileSet" uid="uid://daolc8ryv5c4k" path="res://resources/alonvisuzlize_tile_set.tres" id="5_8tfcn"]
+[ext_resource type="Script" uid="uid://vi6h0wrcr6f6" path="res://scene/state_machine/enemy_turn_state.gd" id="5_pj1h8"]
 [ext_resource type="PackedScene" uid="uid://dka6r1imhxww6" path="res://scene/unit/unit2.tscn" id="8_t6xhd"]
 
 [node name="LevelScene" type="Node"]
 script = ExtResource("1_gbvrf")
 
 [node name="GameUI" parent="." instance=ExtResource("1_j5dih")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_pj1h8")]
+starting_state = NodePath("PlayerTurnState")
+
+[node name="PlayerTurnState" type="Node" parent="StateMachine"]
+script = ExtResource("4_owm7n")
+state_name = "PlayerTurnState"
+metadata/_custom_type_script = "uid://il30txxhhkeo"
+
+[node name="EnemyTurnState" type="Node" parent="StateMachine"]
+script = ExtResource("5_pj1h8")
+state_name = "EnemyTurnState"
+metadata/_custom_type_script = "uid://il30txxhhkeo"
 
 [node name="NavLayer" type="TileMapLayer" parent="."]
 position = Vector2(4, 0)
