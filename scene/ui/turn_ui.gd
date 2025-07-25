@@ -12,6 +12,8 @@ func _ready() -> void:
 	
 	
 func on_end_turn_button_pressed() ->void:
+	if PlayerActionManager.is_performing_action or EnemyActionManage.is_performing_action:
+		return
 	TurnManager.start_enemy_turn()
 	
 func on_player_turn_started() ->void:

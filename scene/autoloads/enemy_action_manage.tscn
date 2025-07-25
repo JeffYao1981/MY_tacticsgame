@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drfoykxjoptur"]
+
+[ext_resource type="Script" uid="uid://dfi7mlrj88t3l" path="res://scene/autoloads/enemy_action_manage.gd" id="1_a1pc2"]
+
+[node name="EnemyActionManage" type="Node"]
+script = ExtResource("1_a1pc2")

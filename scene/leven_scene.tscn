@@ -48,10 +48,10 @@ tile_set = ExtResource("5_8tfcn")
 position = Vector2(4, 0)
 
 [node name="ArcherUnit" parent="." instance=ExtResource("10_owm7n")]
-position = Vector2(119, 240)
+position = Vector2(116, 240)
 
 [node name="KnightUnit" parent="." instance=ExtResource("11_i36vu")]
-position = Vector2(240, 208)
+position = Vector2(244, 208)
 
 [node name="WizardUnit" parent="." instance=ExtResource("12_me2tt")]
 position = Vector2(180, 240)

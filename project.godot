@@ -21,6 +21,7 @@ GridManager="*res://scene/autoloads/grid_manager.tscn"
 PlayerActionManager="*res://scene/autoloads/player_action_manager.tscn"
 GameManager="*res://scene/autoloads/game_manager.tscn"
 TurnManager="*res://scene/autoloads/turn_manager.tscn"
+EnemyActionManage="*res://scene/autoloads/enemy_action_manage.tscn"
 
 [display]
 

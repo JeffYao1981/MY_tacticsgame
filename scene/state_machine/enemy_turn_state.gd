@@ -1,5 +1,24 @@
 extends BaseState
 
 
+var go_to_player_turn:bool = false
+
 func on_state_enter() -> void:
-	print(state_name+"enter")
+	TurnManager.player_turn_started.connect(on_player_turn_started)
+	print("进入敌人回合")
+	go_to_player_turn = false
+
+func on_state_frame_update(delta:float) -> void:
+	if go_to_player_turn:
+		state_changed.emit("PlayerTurnState")
+		return
+	
+	EnemyActionManage.try_perform_ai_action()
+	
+
+func on_state_exit() -> void:
+	TurnManager.player_turn_started.disconnect(on_player_turn_started)
+
+		
+func on_player_turn_started() -> void:
+	go_to_player_turn = true

@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://cx2op28btrack" path="res://scene/ui/unit_actions_ui.gd" id="1_xneuj"]
 [ext_resource type="PackedScene" uid="uid://d3kxmkv86rhke" path="res://scene/ui/action_card_ui.tscn" id="2_5ty5x"]
-[ext_resource type="Script" path="res://scene/ui/turn_ui.gd" id="3_5ty5x"]
+[ext_resource type="Script" uid="uid://et2ux3ymtmsr" path="res://scene/ui/turn_ui.gd" id="3_5ty5x"]
 
 [node name="GameUI" type="CanvasLayer"]
 

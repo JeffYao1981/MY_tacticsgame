@@ -1,8 +1,9 @@
-[gd_scene load_steps=4 format=3 uid="uid://c3if7c05ge0wn"]
+[gd_scene load_steps=5 format=3 uid="uid://c3if7c05ge0wn"]
 
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_l3kng"]
 [ext_resource type="PackedScene" uid="uid://doj66q6m8rpx5" path="res://scene/actions/bow_action.tscn" id="2_pqgpo"]
 [ext_resource type="SpriteFrames" uid="uid://bssspw8a14jrc" path="res://resources/animations/enemy_animations/enemy_archer_animation.tres" id="2_yt8mq"]
+[ext_resource type="Script" uid="uid://dnk8a053ogdt5" path="res://scene/units/enemy_units/archer_enemy_ai.gd" id="4_e7aq6"]
 
 [node name="EnemyArcherUnit" instance=ExtResource("1_l3kng")]
 is_enemy = true
@@ -11,3 +12,8 @@ is_enemy = true
 sprite_frames = ExtResource("2_yt8mq")
 
 [node name="BowAction" parent="ActionsManager" index="1" instance=ExtResource("2_pqgpo")]
+
+[node name="EnemyAI" type="Node" parent="." index="2" node_paths=PackedStringArray("unit")]
+script = ExtResource("4_e7aq6")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://dvo00rplx2nh8"

@@ -32,7 +32,7 @@ func set_selected_action(action:BaseAction) ->void:
 	GridManager.visualize_grids(selected_action.get_action_grids(),selected_action.grid_color)
 
 
-func try_perform_selected_action() -> void:
+func  try_perform_selected_action()-> void:
 	if is_performing_action:
 		return
 	if selected_action == null:
