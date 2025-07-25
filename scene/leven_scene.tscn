@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=4 uid="uid://nrsx7ey1xhyq"]
+[gd_scene load_steps=16 format=4 uid="uid://nrsx7ey1xhyq"]
 
 [ext_resource type="Script" uid="uid://cvs5118wst686" path="res://scene/leven_scene.gd" id="1_gbvrf"]
 [ext_resource type="PackedScene" uid="uid://vcq027y1uk84" path="res://scene/ui/game_ui.tscn" id="1_j5dih"]
@@ -12,6 +12,9 @@
 [ext_resource type="PackedScene" uid="uid://cg3c16c7ja3rq" path="res://scene/units/player_units/archer_unit.tscn" id="10_owm7n"]
 [ext_resource type="PackedScene" uid="uid://djv2cw5ffahlj" path="res://scene/units/player_units/knight_unit.tscn" id="11_i36vu"]
 [ext_resource type="PackedScene" uid="uid://dree2tlowkvnv" path="res://scene/units/player_units/wizard_unit.tscn" id="12_me2tt"]
+[ext_resource type="PackedScene" uid="uid://c3if7c05ge0wn" path="res://scene/units/enemy_units/enemy_archer_unit.tscn" id="13_68ae3"]
+[ext_resource type="PackedScene" uid="uid://bn3y7vqhks3f7" path="res://scene/units/enemy_units/enemy_knight_unit.tscn" id="14_tevre"]
+[ext_resource type="PackedScene" uid="uid://bhekswvojg3qb" path="res://scene/units/enemy_units/enemy_wizard_unit.tscn" id="15_s4nly"]
 
 [node name="LevelScene" type="Node"]
 script = ExtResource("1_gbvrf")
@@ -52,3 +55,12 @@ position = Vector2(240, 208)
 
 [node name="WizardUnit" parent="." instance=ExtResource("12_me2tt")]
 position = Vector2(180, 240)
+
+[node name="EnemyArcherUnit" parent="." instance=ExtResource("13_68ae3")]
+position = Vector2(244, 400)
+
+[node name="EnemyKnightUnit" parent="." instance=ExtResource("14_tevre")]
+position = Vector2(180, 336)
+
+[node name="EnemyWizardUnit" parent="." instance=ExtResource("15_s4nly")]
+position = Vector2(244, 336)

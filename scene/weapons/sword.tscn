@@ -3,6 +3,21 @@
 [ext_resource type="Script" uid="uid://fwd8fhg33idn" path="res://scene/weapons/sword.gd" id="1_15c0b"]
 [ext_resource type="Texture2D" uid="uid://s8nfnlb02p7t" path="res://assets/weapons/Iron_Sword.png" id="1_63y8b"]
 
+[sub_resource type="Animation" id="Animation_brgiw"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2i(0, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_15c0b"]
 resource_name = "attack"
 length = 0.4
@@ -35,21 +50,6 @@ tracks/1/keys = {
 "args": [],
 "method": &"animation_finished"
 }]
-}
-
-[sub_resource type="Animation" id="Animation_brgiw"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rs56k"]

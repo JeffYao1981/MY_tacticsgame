@@ -22,7 +22,7 @@ func set_up(finish_action:Callable,unit:Unit,target_grid_position:Vector2i) ->vo
 	animation_player.play("attack")
 	
 func deal_damage() ->void :
-	if target != null and target.is_enemy != unit.is_enemy:
+	if target and target.is_enemy != unit.is_enemy:
 		target.take_damage(damager_amount)
 	
 func animation_finished() ->void:
