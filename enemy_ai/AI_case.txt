@@ -1,0 +1,190 @@
+必需的基础属性：
+生命值系统
+gdscriptvar current_hp: int        # 当前生命值
+var max_hp: int           # 最大生命值
+战斗属性
+gdscriptvar attack_power: int     # 攻击力
+var defense: int          # 防御力
+var attack_range: int     # 攻击范围
+var movement_range: int   # 移动范围
+位置和阵营
+gdscriptvar grid_position: Vector2i  # 当前网格位置
+var is_enemy: bool           # 是否为敌方单位
+行动系统
+gdscriptvar current_action_points: int    # 当前行动点
+var actions_manager              # 行动管理器
+单位类型（可选，用于AI优先级判断）
+gdscriptvar unit_type: String      # 例如："warrior", "mage", "archer", "healer"
+必需的方法：
+行动管理器相关
+gdscript# actions_manager需要有get_action方法
+func get_action(action_name: String) -> BaseAction
+可选但推荐的属性：
+扩展战斗属性
+gdscriptvar magic_power: int      # 魔法攻击力（如果有法师）
+var magic_defense: int    # 魔法防御力
+var critical_rate: float  # 暴击率
+var accuracy: float       # 命中率
+var dodge_rate: float     # 闪避率
+状态效果
+gdscriptvar status_effects: Array  # 当前状态效果列表
+var is_stunned: bool      # 是否被眩晕
+var is_poisoned: bool     # 是否中毒
+示例Unit类结构：
+gdscriptextends Node2D
+class_name Unit
+
+# 基础属性
+@export var max_hp: int = 100
+@export var current_hp: int = 100
+@export var attack_power: int = 20
+@export var defense: int = 10
+@export var attack_range: int = 1
+@export var movement_range: int = 3
+@export var unit_type: String = "warrior"
+@export var is_enemy: bool = false
+
+# 行动系统
+@export var max_action_points: int = 2
+var current_action_points: int = 2
+var actions_manager: ActionsManager
+
+# 位置
+var grid_position: Vector2i
+
+func _ready():
+	current_hp = max_hp
+	current_action_points = max_action_points
+
+
+
+
+
+==========================================================================================
+__________________________________________________________________________________________
+# 剑士AI - 激进型
+extends AdvancedEnemyAI
+class_name SwordmanAI
+
+func _ready():
+	aggression_level = 0.8
+	self_preservation = 0.3
+	tactical_awareness = 0.6
+
+func think() -> AIActionData:
+	var ai_action_data: AIActionData = AIActionData.new()
+	
+	# 优先尝试智能攻击
+	if try_perform_smart_attack_action(unit.actions_manager.get_action("sword_action"), ai_action_data):
+		return ai_action_data
+	# 然后尝试智能移动以便下回合攻击
+	elif try_perform_smart_move_action(unit.actions_manager.get_action("sword_action"), ai_action_data):
+		return ai_action_data
+	
+	return null
+
+# ===================================
+
+# 弓箭手AI - 平衡型
+extends AdvancedEnemyAI
+class_name ArcherAI
+
+func _ready():
+	aggression_level = 0.6
+	self_preservation = 0.7
+	tactical_awareness = 0.8
+
+func think() -> AIActionData:
+	var ai_action_data: AIActionData = AIActionData.new()
+	
+	# 弓箭手优先保持距离
+	var bow_action = unit.actions_manager.get_action("bow_action")
+	
+	# 先尝试在当前位置攻击
+	if try_perform_smart_attack_action(bow_action, ai_action_data):
+		return ai_action_data
+	
+	# 如果无法攻击，尝试移动到更好的位置
+	elif try_perform_smart_move_action(bow_action, ai_action_data):
+		return ai_action_data
+	
+	return null
+
+# ===================================
+
+# 法师AI - 战术型
+extends AdvancedEnemyAI
+class_name MageAI
+
+func _ready():
+	aggression_level = 0.5
+	self_preservation = 0.8
+	tactical_awareness = 0.9
+
+func think() -> AIActionData:
+	var ai_action_data: AIActionData = AIActionData.new()
+	
+	var magic_action = unit.actions_manager.get_action("magic_action")
+	var heal_action = unit.actions_manager.get_action("heal_action")
+	
+	# 法师优先考虑治疗友军
+	if should_heal_allies() and try_perform_heal_action(heal_action, ai_action_data):
+		return ai_action_data
+	
+	# 然后考虑魔法攻击
+	elif try_perform_smart_attack_action(magic_action, ai_action_data):
+		return ai_action_data
+	
+	# 最后考虑移动到安全位置
+	elif try_perform_smart_move_action(magic_action, ai_action_data):
+		return ai_action_data
+	
+	return null
+
+func should_heal_allies() -> bool:
+	# 检查是否有友军需要治疗
+	var allies = get_all_allied_units()
+	for ally in allies:
+		var health_ratio = float(ally.current_hp) / float(ally.max_hp)
+		if health_ratio < 0.6:  # 血量低于60%
+			return true
+	return false
+
+func try_perform_heal_action(heal_action: BaseAction, ai_action_data: AIActionData) -> bool:
+	if heal_action == null:
+		return false
+	
+	if unit.current_action_points < heal_action.action_point_cost:
+		return false
+	
+	# 找到最需要治疗的友军
+	var allies_in_range = get_allies_in_grids(heal_action.get_action_grids())
+	if allies_in_range.is_empty():
+		return false
+	
+	var most_wounded_ally = null
+	var lowest_health_ratio = 1.0
+	
+	for ally in allies_in_range:
+		var health_ratio = float(ally.current_hp) / float(ally.max_hp)
+		if health_ratio < lowest_health_ratio:
+			lowest_health_ratio = health_ratio
+			most_wounded_ally = ally
+	
+	if most_wounded_ally != null:
+		ai_action_data.action = heal_action
+		ai_action_data.grid_position = most_wounded_ally.grid_position
+		return true
+	
+	return false
+
+func get_allies_in_grids(grids: Array[Vector2i]) -> Array[Unit]:
+	var allies: Array[Unit] = []
+	for grid in grids:
+		if GridManager.is_grid_occupied(grid):
+			var occupant = GridManager.get_grid_occupied(grid)
+			if occupant.is_enemy and occupant != unit:  # 同为敌方且不是自己
+				allies.append(occupant)
+	return allies
+
+___________________________________________________________

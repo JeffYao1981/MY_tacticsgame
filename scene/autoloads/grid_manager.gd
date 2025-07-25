@@ -4,6 +4,30 @@ extends Node
 var nav_layer: NavLayer
 var visual_layer:TileMapLayer
 
+var map_width: int = 0
+var map_height: int = 0
+
+func _ready():
+	calculate_map_size()
+
+func calculate_map_size():
+	if not nav_layer or nav_layer.grid_data_dict.is_empty():
+		return
+	
+	var min_x = 999999
+	var max_x = -999999
+	var min_y = 999999
+	var max_y = -999999
+	
+	for grid_pos in nav_layer.grid_data_dict.keys():
+		min_x = min(min_x, grid_pos.x)
+		max_x = max(max_x, grid_pos.x)
+		min_y = min(min_y, grid_pos.y)
+		max_y = max(max_y, grid_pos.y)
+	
+	map_width = max_x - min_x + 1
+	map_height = max_y - min_y + 1
+
 func get_grid_position(world_position:Vector2) -> Vector2i:#转化世界坐标为网格的索引坐标
 	return nav_layer.local_to_map(nav_layer.to_local(world_position))
 
