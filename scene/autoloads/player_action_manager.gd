@@ -40,6 +40,8 @@ func try_perform_selected_action() -> void:
 	var target_grid_position: Vector2i = GridManager.get_mouse_grid_position()
 	if not selected_action.get_action_grids().has(target_grid_position):
 		return
+	if selected_unit.current_action_points < selected_action.action_point_cost:
+		return
 	
 	is_performing_action = true
 	

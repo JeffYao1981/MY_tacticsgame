@@ -5,6 +5,8 @@ class_name BaseAction
 @export var action_id:String
 @export var action_name:String
 @export var grid_color:Color = Color.WHITE
+@export var action_point_cost:int = 1
+
 
 var unit: Unit
 var is_active: bool = false #是否正在执行
@@ -17,6 +19,7 @@ func _ready() -> void:
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) ->void:
 	is_active = true
 	self.on_action_finished = on_action_finished
+	unit.current_action_points -= action_point_cost
 
 func finish_action() ->void:
 	is_active = false	
