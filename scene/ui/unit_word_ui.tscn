@@ -1,0 +1,37 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcja1yjuhgidg"]
+
+[ext_resource type="Script" uid="uid://bdqomnshco02x" path="res://scene/ui/unit_word_ui.gd" id="1_kmq8a"]
+[ext_resource type="FontFile" uid="uid://cmpxv0lxgbtto" path="res://assets/fonts/Rockboxcond12.ttf" id="2_edref"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6k7r1"]
+bg_color = Color(0.231116, 0.122932, 0.0761467, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_t0vhx"]
+bg_color = Color(0.845943, 0.338476, 0.321247, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.231373, 0.121569, 0.0745098, 1)
+
+[node name="UnitWordUI" type="Node2D"]
+script = ExtResource("1_kmq8a")
+
+[node name="HealthBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(24, 4)
+offset_right = 24.0
+offset_bottom = 4.0
+theme_override_styles/background = SubResource("StyleBoxFlat_6k7r1")
+theme_override_styles/fill = SubResource("StyleBoxFlat_t0vhx")
+value = 50.0
+show_percentage = false
+
+[node name="ActionPointLabel" type="Label" parent="."]
+offset_left = -8.0
+offset_top = -17.0
+offset_right = 32.0
+offset_bottom = 6.0
+theme_override_fonts/font = ExtResource("2_edref")
+text = "2"
+horizontal_alignment = 1
+vertical_alignment = 1

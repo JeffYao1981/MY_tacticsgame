@@ -2,6 +2,7 @@ extends Node2D
 class_name Unit
 
 signal unit_died(unit:Unit)
+signal action_point_changed(action_point: int)
 
 @onready var unit_area: Area2D = $UnitArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -14,7 +15,10 @@ signal unit_died(unit:Unit)
 @export var is_enemy : bool = false  #可以做成枚举，添加中立单位
 @export var action_points:int = 2
 
-var current_action_points:int
+var current_action_points:int:
+	set (value):
+		current_action_points = value
+		action_point_changed.emit(current_action_points)
 var is_dead :bool = false
 
 var grid_position:Vector2i:
