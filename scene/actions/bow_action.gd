@@ -32,10 +32,7 @@ func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i
 	return results
 	
 func is_valid_action_grid(unit_grid:Vector2i,grid_position: Vector2i) -> bool:
-	if is_obstacle(grid_position):
-		return false
-	if is_occupied_by_allay(grid_position):
-		return false
+	
 	if hit_obstacle(unit_grid,grid_position):
 		return false
 	return true

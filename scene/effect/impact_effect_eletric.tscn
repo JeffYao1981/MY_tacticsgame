@@ -1,0 +1,56 @@
+[gd_scene load_steps=9 format=3 uid="uid://gfl6cc81562t"]
+
+[ext_resource type="Texture2D" uid="uid://cnqkgaqfrhirf" path="res://assets/effect/Eletric A-Sheet.png" id="1_nu78e"]
+[ext_resource type="Script" uid="uid://baf2fkexb0d1w" path="res://scene/effect/impact_effect.gd" id="2_orr37"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_orr37"]
+atlas = ExtResource("1_nu78e")
+region = Rect2(0, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ipk2x"]
+atlas = ExtResource("1_nu78e")
+region = Rect2(192, 0, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6m3n4"]
+atlas = ExtResource("1_nu78e")
+region = Rect2(96, 96, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mnrcj"]
+atlas = ExtResource("1_nu78e")
+region = Rect2(0, 192, 96, 96)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_opk8c"]
+atlas = ExtResource("1_nu78e")
+region = Rect2(192, 192, 96, 96)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_akpcq"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_orr37")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ipk2x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6m3n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mnrcj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_opk8c")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[node name="ImpactEffect_eletric" type="AnimatedSprite2D"]
+position = Vector2(1, -14)
+scale = Vector2(0.328125, 0.328125)
+sprite_frames = SubResource("SpriteFrames_akpcq")
+autoplay = "default"
+frame = 4
+frame_progress = 1.0
+script = ExtResource("2_orr37")

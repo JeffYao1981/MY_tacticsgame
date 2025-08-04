@@ -16,7 +16,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	sword.set_up(finish_action,unit,target_grid_position)
 	
 	
-
+	
 
 #func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	#var results: Array[Vector2i] = []
@@ -89,6 +89,6 @@ func get_action_grids(unit_grid: Vector2i = unit.grid_position) -> Array[Vector2
 				results.append(next_pos)
 			
 			# 将下一个位置加入队列继续扩展
-			queue.append([next_pos, current_distance + 1])
+			
 	
 	return results

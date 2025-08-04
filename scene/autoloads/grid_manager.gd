@@ -99,7 +99,8 @@ func visualize_grids(grids:Array[Vector2i],color:Color = Color.WHITE) -> void:
 	visual_layer.clear()
 	visual_layer.modulate = color
 	visual_layer.set_cells_terrain_connect(grids,0,0)
-	
+
+
 	
 	
 	

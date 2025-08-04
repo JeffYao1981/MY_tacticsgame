@@ -20,12 +20,16 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) ->v
 	is_active = true
 	self.on_action_finished = on_action_finished
 	unit.current_action_points -= action_point_cost
-
+	GridManager.visual_layer.clear()
+	
+	
 func finish_action() ->void:
 	is_active = false	
 	on_action_finished.call()
-	
-	
+	if unit.current_action_points >= action_point_cost :
+		GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
+	#elif :
+		
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	return []
 

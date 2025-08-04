@@ -8,9 +8,9 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	super.start_action(target_grid_position, on_action_finished)
 	
 	if target_grid_position.x > unit.grid_position.x:
-		unit.animated_sprite_2d.scale = Vector2(1,1)
+		unit.animated_sprite_2d.scale = Vector2(1.333,1.333)
 	elif target_grid_position.x < unit.grid_position.x:
-		unit.animated_sprite_2d.scale = Vector2(-1,1)
+		unit.animated_sprite_2d.scale = Vector2(-1.333,1.333)
 	
 	var fireball:Projectile = fireball_scene.instantiate()
 	get_tree().current_scene.add_child(fireball)

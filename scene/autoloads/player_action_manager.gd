@@ -19,7 +19,7 @@ func set_selected_unit(unit:Unit) ->void:
 	selected_unit = unit
 	print(unit.name + "selected")
 	unit_selected.emit(selected_unit)
-	set_selected_action(unit.actions_manager.get_action("move_action"))
+	set_selected_action(unit.actions_manager.get_action("move_action"))#选择角色后默认选择的action
 
 		
 func set_selected_action(action:BaseAction) ->void:
@@ -27,10 +27,16 @@ func set_selected_action(action:BaseAction) ->void:
 		return
 	if selected_action == action:
 		return
+		
 	print("select"+action.action_name)
 	selected_action = action
-	GridManager.visualize_grids(selected_action.get_action_grids(),selected_action.grid_color)
-
+	
+	
+	if selected_unit.current_action_points >= selected_action.action_point_cost:
+		GridManager.visualize_grids(selected_action.get_action_grids(),selected_action.grid_color)
+	else :	
+		GridManager.visual_layer.clear()
+	
 
 func  try_perform_selected_action()-> void:
 	if is_performing_action:

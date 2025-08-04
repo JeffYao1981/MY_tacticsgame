@@ -19,6 +19,8 @@
 [node name="LevelScene" type="Node"]
 script = ExtResource("1_gbvrf")
 
+[node name="GameUI" parent="." instance=ExtResource("1_j5dih")]
+
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_pj1h8")]
 starting_state = NodePath("PlayerTurnState")
 
@@ -31,8 +33,6 @@ metadata/_custom_type_script = "uid://il30txxhhkeo"
 script = ExtResource("5_pj1h8")
 state_name = "EnemyTurnState"
 metadata/_custom_type_script = "uid://il30txxhhkeo"
-
-[node name="GameUI" parent="." instance=ExtResource("1_j5dih")]
 
 [node name="NavLayer" type="TileMapLayer" parent="."]
 position = Vector2(4, 0)
@@ -57,16 +57,16 @@ position = Vector2(4, 0)
 position = Vector2(116, 240)
 
 [node name="KnightUnit" parent="." instance=ExtResource("11_i36vu")]
-position = Vector2(244, 240)
+position = Vector2(244, 208)
 
 [node name="WizardUnit" parent="." instance=ExtResource("12_me2tt")]
 position = Vector2(180, 240)
 
 [node name="EnemyArcherUnit" parent="." instance=ExtResource("13_68ae3")]
-position = Vector2(148, 368)
+position = Vector2(244, 400)
 
 [node name="EnemyKnightUnit" parent="." instance=ExtResource("14_tevre")]
-position = Vector2(212, 368)
+position = Vector2(180, 336)
 
 [node name="EnemyWizardUnit" parent="." instance=ExtResource("15_s4nly")]
-position = Vector2(276, 368)
+position = Vector2(244, 336)

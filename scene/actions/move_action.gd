@@ -33,11 +33,11 @@ func _process(delta: float) -> void:
 		move(path[0],delta)
 		if unit.global_position == path[0]:
 			path.remove_at(0)
-			GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
+			#GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
 	else :
 		unit.animated_sprite_2d.play("idle")
 		finish_action()
-
+		
 
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:#获取刻操作格子
 	var results: Array[Vector2i] = []

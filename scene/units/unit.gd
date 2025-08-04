@@ -1,8 +1,12 @@
 extends Node2D
 class_name Unit
+
+signal unit_died(unit:Unit)
+
 @onready var unit_area: Area2D = $UnitArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_slot: Node2D = $AnimatedSprite2D/WeaponSlot
+@onready var health: Health = $Health
 
 
 
@@ -11,6 +15,7 @@ class_name Unit
 @export var action_points:int = 2
 
 var current_action_points:int
+var is_dead :bool = false
 
 var grid_position:Vector2i:
 	get: return GridManager.get_grid_position(global_position)
@@ -20,6 +25,7 @@ func _ready() -> void:
 	TurnManager.player_turn_started.connect(on_player_turn_started)
 	TurnManager.enemy_turn_started.connect(on_enemy_turn_started)
 	unit_area.unit_selected.connect(on_unit_selected)
+	health.health_changed.connect(on_health_changed)
 	current_action_points = action_points
 	GameManager.register_unit(self)
 		
@@ -28,6 +34,7 @@ func on_unit_selected() ->void:
 	
 func take_damage(damage_amount:int) -> void:
 	print(name + "受到了"+ str(damage_amount)+"点伤害")
+	health.take_damage(damage_amount)
 	
 func on_player_turn_started() -> void:
 	if is_enemy:
@@ -38,5 +45,16 @@ func on_enemy_turn_started() -> void:
 	if is_enemy:
 		current_action_points = action_points
 	
-
+func on_health_changed(health_point:int) -> void:
+	if health_point <= 0 :
+		die()
 	
+func die() ->void:
+	is_dead = true
+	GridManager.set_grid_occupied(grid_position,null)
+	GridManager.set_grid_walkable(grid_position,true)
+	GameManager.unregister_unit(self)
+	unit_died.emit(self)
+	animated_sprite_2d.play("die")
+	await animated_sprite_2d.animation_finished
+	queue_free()

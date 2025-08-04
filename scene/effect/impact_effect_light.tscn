@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://dcatmes0wm0xq"]
+
+[ext_resource type="PackedScene" uid="uid://b50lfm06xsq1d" path="res://scene/effect/impact_effect.tscn" id="1_e7kws"]
+
+[node name="ImpactEffect" instance=ExtResource("1_e7kws")]

@@ -15,6 +15,9 @@ func on_mouse_exited() -> void:
 	is_mouse_hovered = false
 
 func _unhandled_input(event: InputEvent) -> void:
+	if not TurnManager.is_player_turn():
+		return
+		
 	if event.is_action_pressed("left_mouse_click"):
 		if is_mouse_hovered:
 			unit_selected.emit()

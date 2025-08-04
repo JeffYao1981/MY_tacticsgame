@@ -2,6 +2,7 @@ extends Node
 class_name StateMachine
 
 
+
 @export var starting_state:BaseState
 
 var states: Array[BaseState]
@@ -11,13 +12,15 @@ var is_launched: bool = false #状态机是否启动
 
 
 func _ready() -> void:
+	TurnManager.state_machine = self
 	for state:BaseState in get_children():
 		states.append(state)
 		state.state_changed.connect(on_state_changed)
 		
 func launch_state_machine() -> void:
 	is_launched = true
-	current_state = starting_state	
+	current_state = starting_state
+	
 	current_state.on_state_enter()
 
 func _process(delta: float) -> void:
