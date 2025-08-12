@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="unit_resource" load_steps=5 format=3 uid="uid://by21iwyhn4kgj"]
+
+[ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_g8x0c"]
+[ext_resource type="Texture2D" uid="uid://cio6n5xpb1oo8" path="res://assets/characters/Wizard.png" id="2_2rtny"]
+[ext_resource type="PackedScene" uid="uid://dree2tlowkvnv" path="res://scene/units/player_units/wizard_unit.tscn" id="3_hhy0q"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jvucj"]
+atlas = ExtResource("2_2rtny")
+region = Rect2(0, 1, 24, 24)
+
+[resource]
+script = ExtResource("1_g8x0c")
+unit_icon = SubResource("AtlasTexture_jvucj")
+unit_name = "Wizard"
+unit_description = "大范围攻击"
+unit_scene = ExtResource("3_hhy0q")
+metadata/_custom_type_script = "uid://dpquwsx8q5sek"

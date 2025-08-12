@@ -1,8 +1,9 @@
 extends Node
 
-@onready var visual_layer: TileMapLayer = $VisualLayer
+@onready var visual_layer: TileMapLayer = $Map/VisualLayer
 @onready var state_machine: StateMachine = $StateMachine
 
+@export var player_spawn_positions:Array[Node2D]
 
 
 func _ready() -> void:

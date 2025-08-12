@@ -12,6 +12,7 @@
 size = Vector2(32, 32)
 
 [node name="Unit" type="Node2D"]
+z_index = 1
 script = ExtResource("1_fmkjs")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

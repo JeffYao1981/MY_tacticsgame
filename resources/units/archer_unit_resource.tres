@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="unit_resource" load_steps=5 format=3 uid="uid://cyf6xpcngk16x"]
+
+[ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_d5usn"]
+[ext_resource type="Texture2D" uid="uid://bl3t748hr8ed1" path="res://assets/characters/Archer.png" id="2_8hc7w"]
+[ext_resource type="PackedScene" uid="uid://cg3c16c7ja3rq" path="res://scene/units/player_units/archer_unit.tscn" id="3_e17a1"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h3v0u"]
+atlas = ExtResource("2_8hc7w")
+region = Rect2(0, 1, 24, 24)
+
+[resource]
+script = ExtResource("1_d5usn")
+unit_icon = SubResource("AtlasTexture_h3v0u")
+unit_name = "Archer"
+unit_description = "直线攻击"
+unit_scene = ExtResource("3_e17a1")
+metadata/_custom_type_script = "uid://dpquwsx8q5sek"

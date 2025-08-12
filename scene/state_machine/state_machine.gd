@@ -21,7 +21,7 @@ func launch_state_machine() -> void:
 	is_launched = true
 	current_state = starting_state
 	
-	current_state.on_state_enter()
+	current_state.on_state_movie()
 
 func _process(delta: float) -> void:
 	if is_launched:
@@ -32,11 +32,12 @@ func _physics_process(delta: float) -> void:
 		current_state.on_state_physics_update(delta)
 		
 func on_state_changed(state_name:String) -> void:
+	print("我是state_machine.on_state_change")
 	var new_state:BaseState = get_state(state_name)
 	if new_state != null:
 		current_state.on_state_exit()
 		current_state = new_state
-		current_state.on_state_enter()
+		current_state.on_state_movie()
 	
 func get_state(state_name:String) -> BaseState:
 	for state in states:

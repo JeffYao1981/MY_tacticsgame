@@ -1,17 +1,23 @@
 extends BaseState
 
+
+
 var listen_for_input: bool = false
-var go_to_enemy_turn:bool = false
+
 
 
 func on_state_enter() -> void:
+	
+	
 	TurnManager.enemy_turn_started.connect(on_enemy_turn_started)
 	listen_for_input = true
-	go_to_enemy_turn = false
+	
 
 func on_state_frame_update(delta:float) -> void:
-	if go_to_enemy_turn:
+	if go_to_next_turn:
 		state_changed.emit("EnemyTurnState")
+	
+	
 
 	
 func on_state_exit() -> void:
@@ -29,6 +35,7 @@ func _unhandled_input(event: InputEvent) -> void:
 func on_enemy_turn_started() ->void:
 	if PlayerActionManager.is_performing_action:
 		return
-	go_to_enemy_turn = true
+	go_to_next_turn = true
+	
 	
 	

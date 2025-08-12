@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="unit_resource" load_steps=5 format=3 uid="uid://bu5satm5li4jn"]
+
+[ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_f6yir"]
+[ext_resource type="Texture2D" uid="uid://df12t6kypnva2" path="res://assets/characters/Knight.png" id="2_c733p"]
+[ext_resource type="PackedScene" uid="uid://djv2cw5ffahlj" path="res://scene/units/player_units/knight_unit.tscn" id="3_vuira"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8xl3h"]
+atlas = ExtResource("2_c733p")
+region = Rect2(0, 1, 24, 24)
+
+[resource]
+script = ExtResource("1_f6yir")
+unit_icon = SubResource("AtlasTexture_8xl3h")
+unit_name = "knight"
+unit_description = "防御力强，近战攻击。"
+unit_scene = ExtResource("3_vuira")
+metadata/_custom_type_script = "uid://dpquwsx8q5sek"
