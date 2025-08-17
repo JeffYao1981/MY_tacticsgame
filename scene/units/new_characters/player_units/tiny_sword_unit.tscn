@@ -494,8 +494,6 @@ autoplay = "idle"
 [node name="ActionsManager" parent="." instance=ExtResource("3_g6c66")]
 
 [node name="NewMoveAction" parent="ActionsManager" instance=ExtResource("4_k8rde")]
-action_id = "move_action"
-action_name = "Move"
 
 [node name="TinySwordAction" parent="ActionsManager" instance=ExtResource("6_6he8p")]
 action_id = "tiny_sword_action"

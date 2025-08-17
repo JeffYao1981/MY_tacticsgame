@@ -4,7 +4,8 @@
 
 [node name="NewMoveAction" type="Node"]
 script = ExtResource("1_gegdk")
-action_id = "new_move_action"
-action_name = "NewMove"
+action_id = "move_action"
+action_name = "Move"
 grid_color = Color(0.0921611, 0.465074, 0.13607, 1)
+action_point_cost = 0
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

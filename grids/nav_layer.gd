@@ -10,7 +10,7 @@ func _ready() -> void:
 
 
 func initialize() -> void:
-	a_star = AStarGrid2D.new()#新建寻路
+	a_star = CustomAStarGrid2D.new(self)#新建寻路
 	a_star.region = get_used_rect()#寻路的范围等于tilemap的整体范围
 	a_star.cell_size = tile_set.tile_size#网格的大小等于tilemap的大小
 	a_star.diagonal_mode = AStarGrid2D.DIAGONAL_MODE_NEVER#不可以沿对角线移动

@@ -9,6 +9,7 @@ var map_height: int = 0
 
 func _ready():
 	calculate_map_size()
+	
 
 func calculate_map_size():
 	if not nav_layer or nav_layer.grid_data_dict.is_empty():
@@ -44,7 +45,11 @@ func get_nav_grid_path(start_grid_position:Vector2i,end_grid_position:Vector2i) 
 	if not is_valid_grid(start_grid_position) or not is_valid_grid(end_grid_position):
 		return []
 	
-	return nav_layer.a_star.get_id_path(start_grid_position,end_grid_position)
+	return nav_layer.a_star.get_id_path(start_grid_position, end_grid_position)
+	
+
+
+
 
 func get_nav_world_path(start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2]:
 	var grid_path := get_nav_grid_path(start_grid_position,end_grid_position)
@@ -80,7 +85,7 @@ func set_grid_walkable(grid_position:Vector2i,walkable:bool) ->void:#如果不�
 		return
 	
 	nav_layer.grid_data_dict[grid_position].walkable = walkable
-	nav_layer.a_star.set_point_solid(grid_position,!walkable)
+	
 
 func is_grid_occupied(grid_position:Vector2i) ->bool: #获取网格是否已经被单位占据
 	return is_valid_grid(grid_position) and nav_layer.grid_data_dict[grid_position].is_occupied_by_uint()

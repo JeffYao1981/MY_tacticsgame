@@ -22,3 +22,8 @@ func _ready() -> void:
 		PlayerActionManager.set_selected_unit(unit)
 	
 	state_machine.launch_state_machine()
+
+
+func _input(event):
+	if event.is_action_pressed("debug_key"):  # 设置一个调试按键
+		GridManager.debug_specific_case()

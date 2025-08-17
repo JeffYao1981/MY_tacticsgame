@@ -27,7 +27,7 @@ func unregister_unit(unit:Unit) ->void:
 		if PlayerActionManager.selected_unit == unit and not player_units.is_empty():
 			PlayerActionManager.set_selected_unit(player_units[0])
 
-func spawn_player_units() -> void:
+func spawn_player_units() -> void: #生成玩家角色
 	var spawn_position_idx: int = 0	#索引
 	var spawn_positions:Array[Node2D] = get_tree().current_scene.player_spawn_positions	#将当前场景下指定的角色出生点列表赋值过来
 	for unit_resources:UnitResource in selected_player_resources:	#在选择好的角色资源列表中遍历
