@@ -34,4 +34,14 @@ func on_game_over() ->void:
 	game_finished = true
 	
 func on_exit_button_pressed() ->void:
-	print("Exit Game")
+	GameManager.exit_game()
+	get_tree().change_scene_to_file("res://scene/start_menu_scene.tscn")
+	
+	
+	
+	
+	
+	
+	
+	
+	

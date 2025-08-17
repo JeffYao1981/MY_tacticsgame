@@ -1,6 +1,79 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://dvnjfw8hq54dq"]
+[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dvnjfw8hq54dq"]
 
 [ext_resource type="Texture2D" uid="uid://pab5k6hc0uho" path="res://assets/grids/NaviData_32.png" id="1_jfmu7"]
+[ext_resource type="Texture2D" uid="uid://b1e4pqckhk7o3" path="res://assets/grids/NaviData_wall.png" id="1_ogqkd"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lva6h"]
+texture = ExtResource("1_ogqkd")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/terrain_set = 0
+0:0/0/terrain = 0
+0:0/0/terrains_peering_bit/right_side = 0
+0:0/0/terrains_peering_bit/bottom_right_corner = 0
+0:0/0/terrains_peering_bit/bottom_side = 0
+0:0/0/custom_data_1 = true
+0:0/0/custom_data_3 = true
+1:0/0 = 0
+1:0/0/terrain_set = 0
+1:0/0/terrain = 0
+1:0/0/terrains_peering_bit/right_side = 0
+1:0/0/terrains_peering_bit/bottom_right_corner = 0
+1:0/0/terrains_peering_bit/bottom_side = 0
+1:0/0/terrains_peering_bit/bottom_left_corner = 0
+1:0/0/terrains_peering_bit/left_side = 0
+1:0/0/custom_data_1 = true
+2:0/0 = 0
+2:0/0/terrain_set = 0
+2:0/0/terrain = 0
+2:0/0/terrains_peering_bit/bottom_side = 0
+2:0/0/terrains_peering_bit/bottom_left_corner = 0
+2:0/0/terrains_peering_bit/left_side = 0
+2:0/0/custom_data_1 = true
+2:0/0/custom_data_4 = true
+0:1/0 = 0
+0:1/0/terrain_set = 0
+0:1/0/terrain = 0
+0:1/0/terrains_peering_bit/right_side = 0
+0:1/0/terrains_peering_bit/bottom_right_corner = 0
+0:1/0/terrains_peering_bit/bottom_side = 0
+0:1/0/terrains_peering_bit/top_side = 0
+0:1/0/terrains_peering_bit/top_right_corner = 0
+0:1/0/custom_data_3 = true
+2:1/0 = 0
+2:1/0/terrain_set = 0
+2:1/0/terrain = 0
+2:1/0/terrains_peering_bit/bottom_side = 0
+2:1/0/terrains_peering_bit/bottom_left_corner = 0
+2:1/0/terrains_peering_bit/left_side = 0
+2:1/0/terrains_peering_bit/top_left_corner = 0
+2:1/0/terrains_peering_bit/top_side = 0
+2:1/0/custom_data_4 = true
+0:2/0 = 0
+0:2/0/terrain_set = 0
+0:2/0/terrain = 0
+0:2/0/terrains_peering_bit/right_side = 0
+0:2/0/terrains_peering_bit/top_side = 0
+0:2/0/terrains_peering_bit/top_right_corner = 0
+0:2/0/custom_data_2 = true
+0:2/0/custom_data_3 = true
+1:2/0 = 0
+1:2/0/terrain_set = 0
+1:2/0/terrain = 0
+1:2/0/terrains_peering_bit/right_side = 0
+1:2/0/terrains_peering_bit/left_side = 0
+1:2/0/terrains_peering_bit/top_left_corner = 0
+1:2/0/terrains_peering_bit/top_side = 0
+1:2/0/terrains_peering_bit/top_right_corner = 0
+1:2/0/custom_data_2 = true
+2:2/0 = 0
+2:2/0/terrain_set = 0
+2:2/0/terrain = 0
+2:2/0/terrains_peering_bit/left_side = 0
+2:2/0/terrains_peering_bit/top_left_corner = 0
+2:2/0/terrains_peering_bit/top_side = 0
+2:2/0/custom_data_2 = true
+2:2/0/custom_data_4 = true
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ogqkd"]
 texture = ExtResource("1_jfmu7")
@@ -13,6 +86,18 @@ texture_region_size = Vector2i(32, 32)
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
+terrain_set_0/mode = 0
+terrain_set_0/terrain_0/name = "wall"
+terrain_set_0/terrain_0/color = Color(0.5, 0.34375, 0.25, 1)
 custom_data_layer_0/name = "walkable"
 custom_data_layer_0/type = 1
+custom_data_layer_1/name = "block_north"
+custom_data_layer_1/type = 1
+custom_data_layer_2/name = "block_south"
+custom_data_layer_2/type = 1
+custom_data_layer_3/name = "block_east"
+custom_data_layer_3/type = 1
+custom_data_layer_4/name = "block_west"
+custom_data_layer_4/type = 1
 sources/1 = SubResource("TileSetAtlasSource_ogqkd")
+sources/0 = SubResource("TileSetAtlasSource_lva6h")

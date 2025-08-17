@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://bew5lrohfa7uk"]
+
+[ext_resource type="Script" uid="uid://iis5b6x07bua" path="res://scene/actions/new_move_action.gd" id="1_gegdk"]
+
+[node name="NewMoveAction" type="Node"]
+script = ExtResource("1_gegdk")
+action_id = "new_move_action"
+action_name = "NewMove"
+grid_color = Color(0.0921611, 0.465074, 0.13607, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

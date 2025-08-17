@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="UnitResource" load_steps=5 format=3 uid="uid://bk055mohdhq8g"]
+
+[ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_4omcs"]
+[ext_resource type="Texture2D" uid="uid://jik1jj0sac1w" path="res://assets/Tiny Swords (Update 010)/Factions（阵营）/Knights/Troops/Warrior/Blue/Warrior_Blue_3.png" id="2_2vy0d"]
+[ext_resource type="PackedScene" uid="uid://ccfjxf6hsdeic" path="res://scene/units/new_characters/player_units/tiny_sword_unit.tscn" id="3_citr5"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_citr5"]
+atlas = ExtResource("2_2vy0d")
+region = Rect2(11.7028, 135.218, 39.8289, 39.8289)
+
+[resource]
+script = ExtResource("1_4omcs")
+unit_icon = SubResource("AtlasTexture_citr5")
+unit_name = "warrior_tiny"
+unit_description = "小剑中的角色，有四方向"
+unit_scene = ExtResource("3_citr5")
+metadata/_custom_type_script = "uid://dpquwsx8q5sek"

@@ -1,0 +1,9 @@
+[gd_scene load_steps=3 format=3 uid="uid://dprrl140ujkv"]
+
+[ext_resource type="Script" uid="uid://c1al51s7tca1e" path="res://scene/actions/tiny_sword_action.gd" id="1_p43ui"]
+[ext_resource type="PackedScene" uid="uid://b2y3n2658lmac" path="res://scene/actions/sword_slash.tscn" id="2_17rd6"]
+
+[node name="TinySwordAction" type="Node"]
+script = ExtResource("1_p43ui")
+slash_effect = ExtResource("2_17rd6")
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

@@ -9,6 +9,7 @@ extends Node
 func _ready() -> void:
 	GridManager.visual_layer = visual_layer
 	
+	GameManager.spawn_player_units()
 	for unit: Unit in GameManager.player_units:
 		GridManager.set_grid_walkable(unit.grid_position,false)
 		GridManager.set_grid_occupied(unit.grid_position,unit)

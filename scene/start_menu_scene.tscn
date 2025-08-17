@@ -1,15 +1,23 @@
-[gd_scene load_steps=14 format=3 uid="uid://dvor51ral6try"]
+[gd_scene load_steps=22 format=3 uid="uid://dvor51ral6try"]
 
+[ext_resource type="Script" uid="uid://y8cmbs25c434" path="res://scene/ui/level_selection_ui.gd" id="1_d8sbb"]
 [ext_resource type="Texture2D" uid="uid://bfxdtax02ppm0" path="res://assets/ui/Banners/Banner_Vertical.png" id="1_ig7s7"]
+[ext_resource type="PackedScene" uid="uid://d0beumu4qfa7f" path="res://scene/ui/level_card_ui.tscn" id="2_ccbms"]
 [ext_resource type="Script" uid="uid://dkig6u1pd67ki" path="res://scene/ui/unit_selection_ui.gd" id="2_le4ph"]
 [ext_resource type="Texture2D" uid="uid://df12t6kypnva2" path="res://assets/characters/Knight.png" id="2_nn2wx"]
+[ext_resource type="Script" uid="uid://qcl0rmohaens" path="res://resources/levels/level_resource.gd" id="3_4gwgc"]
 [ext_resource type="Texture2D" uid="uid://dm5pt225bqagc" path="res://assets/ui/Banners/Carved_9Slides.png" id="3_eehb4"]
 [ext_resource type="PackedScene" uid="uid://bnsf4asn0831s" path="res://scene/ui/unit_card_ui.tscn" id="3_tlubb"]
 [ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="4_aqxwh"]
+[ext_resource type="Resource" uid="uid://oeh63eul615w" path="res://resources/levels/level_1_resource.tres" id="4_sdkw5"]
 [ext_resource type="Resource" uid="uid://bu5satm5li4jn" path="res://resources/units/knigth_unit_resource.tres" id="5_kcho5"]
 [ext_resource type="Theme" uid="uid://cnyoif32vic4j" path="res://scene/ui/start_menu_scene_button.tres" id="5_le4ph"]
+[ext_resource type="Resource" uid="uid://c1awudbb0a0gt" path="res://resources/levels/level_2_resource.tres" id="5_vysdg"]
+[ext_resource type="Resource" uid="uid://cvoriv801qpg5" path="res://resources/levels/level_3_resource.tres" id="6_b2bay"]
 [ext_resource type="Resource" uid="uid://cyf6xpcngk16x" path="res://resources/units/archer_unit_resource.tres" id="6_d8sbb"]
 [ext_resource type="Resource" uid="uid://by21iwyhn4kgj" path="res://resources/units/wizard_unit_resource.tres" id="7_jr508"]
+[ext_resource type="Resource" uid="uid://bcghgwjwnlhpf" path="res://resources/units/knight_new_unit_resource.tres" id="8_aqxwh"]
+[ext_resource type="Resource" uid="uid://bk055mohdhq8g" path="res://resources/units/tiny_sword_warrior_resource.tres" id="9_kcho5"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_kcho5"]
 texture = ExtResource("1_ig7s7")
@@ -49,14 +57,46 @@ theme_override_constants/margin_right = 0
 [node name="Background" type="PanelContainer" parent="CanvasLayer/MarginContainer"]
 layout_mode = 2
 
+[node name="LevelSelectionUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/Background"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_d8sbb")
+level_card_ui_scene = ExtResource("2_ccbms")
+level_resources = Array[ExtResource("3_4gwgc")]([ExtResource("4_sdkw5"), ExtResource("5_vysdg"), ExtResource("6_b2bay")])
+
+[node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/Background/LevelSelectionUI"]
+layout_mode = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/MarginContainer/Background/LevelSelectionUI/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 16
+
+[node name="Label" type="Label" parent="CanvasLayer/MarginContainer/Background/LevelSelectionUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "Level Selection"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LevelCardContainer" type="GridContainer" parent="CanvasLayer/MarginContainer/Background/LevelSelectionUI/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+columns = 4
+
 [node name="UnitSelectionUI" type="PanelContainer" parent="CanvasLayer/MarginContainer/Background"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxTexture_kcho5")
 script = ExtResource("2_le4ph")
 unit_card_ui_scene = ExtResource("3_tlubb")
-unit_resources = Array[ExtResource("4_aqxwh")]([ExtResource("5_kcho5"), ExtResource("6_d8sbb"), ExtResource("7_jr508")])
+unit_resources = Array[ExtResource("4_aqxwh")]([ExtResource("5_kcho5"), ExtResource("6_d8sbb"), ExtResource("7_jr508"), ExtResource("8_aqxwh"), ExtResource("9_kcho5")])
 
 [node name="MarginContainer" type="MarginContainer" parent="CanvasLayer/MarginContainer/Background/UnitSelectionUI"]
 layout_mode = 2

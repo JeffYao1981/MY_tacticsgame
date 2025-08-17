@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="unit_resource" load_steps=5 format=3 uid="uid://cyf6xpcngk16x"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=5 format=3 uid="uid://cyf6xpcngk16x"]
 
 [ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_d5usn"]
 [ext_resource type="Texture2D" uid="uid://bl3t748hr8ed1" path="res://assets/characters/Archer.png" id="2_8hc7w"]

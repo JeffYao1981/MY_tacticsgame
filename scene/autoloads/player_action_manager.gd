@@ -28,7 +28,7 @@ func set_selected_action(action:BaseAction) ->void:
 	if selected_action == action:
 		return
 		
-	print("select"+action.action_name)
+	
 	selected_action = action
 	
 	

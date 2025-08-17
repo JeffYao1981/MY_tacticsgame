@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://bn3y7vqhks3f7"]
+[gd_scene load_steps=7 format=3 uid="uid://bn3y7vqhks3f7"]
 
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_dufoi"]
 [ext_resource type="SpriteFrames" uid="uid://m24a54f10yir" path="res://resources/animations/enemy_animations/skeleton_animation.tres" id="2_rb8c7"]
 [ext_resource type="PackedScene" uid="uid://bea8cf5degeby" path="res://scene/actions/sword_action.tscn" id="3_mi0a3"]
 [ext_resource type="Script" uid="uid://bcwt2ouggkb3k" path="res://scene/units/enemy_units/knight_advanced_enemy_ai.gd" id="4_3ddqw"]
+[ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="4_3yg2x"]
 [ext_resource type="Script" uid="uid://bsiwhwloddfpc" path="res://scene/units/enemy_units/knight_enemy_ai.gd" id="5_gd1wv"]
 
 [node name="EnemyKnightUnit" instance=ExtResource("1_dufoi")]
@@ -11,6 +12,8 @@ is_enemy = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_rb8c7")
+
+[node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("4_3yg2x")]
 
 [node name="SowrdAction" parent="ActionsManager" index="1" instance=ExtResource("3_mi0a3")]
 

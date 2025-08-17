@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="unit_resource" load_steps=5 format=3 uid="uid://bu5satm5li4jn"]
+[gd_resource type="Resource" script_class="UnitResource" load_steps=5 format=3 uid="uid://bu5satm5li4jn"]
 
 [ext_resource type="Script" uid="uid://dpquwsx8q5sek" path="res://resources/unit_resource.gd" id="1_f6yir"]
 [ext_resource type="Texture2D" uid="uid://df12t6kypnva2" path="res://assets/characters/Knight.png" id="2_c733p"]

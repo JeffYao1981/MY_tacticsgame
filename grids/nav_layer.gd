@@ -23,3 +23,4 @@ func initialize() -> void:
 		if not get_cell_tile_data(cell).get_custom_data("walkable"):
 			a_star.set_point_solid(cell)
 			grid_data_dict[cell].walkable = false
+			

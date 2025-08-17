@@ -8,6 +8,10 @@ signal action_point_changed(action_point: int)
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var weapon_slot: Node2D = $AnimatedSprite2D/WeaponSlot
 @onready var health: Health = $Health
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var sprite_2d: Sprite2D = $Sprite2D
+@onready var weapon_slot_2: Node2D = $WeaponSlot2
+
 
 
 
@@ -59,6 +63,10 @@ func die() ->void:
 	GridManager.set_grid_walkable(grid_position,true)
 	GameManager.unregister_unit(self)
 	unit_died.emit(self)
-	animated_sprite_2d.play("die")
-	await animated_sprite_2d.animation_finished
+	if animated_sprite_2d :
+		animated_sprite_2d.play("die")
+		await animated_sprite_2d.animation_finished
+	else :
+		animation_player.play("die")
+		await animation_player.animation_finished
 	queue_free()
