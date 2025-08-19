@@ -54,6 +54,7 @@ func exit_game() -> void:
 	PlayerActionManager.is_performing_action = false
 	PlayerActionManager.selected_action = null
 	PlayerActionManager.selected_unit = null
+	PlayerActionManager.range_box_switch = false
 	EnemyActionManage.is_performing_action = false
 	
 	

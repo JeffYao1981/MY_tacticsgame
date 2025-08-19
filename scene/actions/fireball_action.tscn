@@ -1,12 +1,76 @@
-[gd_scene load_steps=3 format=3 uid="uid://b67r7hqfxcqul"]
+[gd_scene load_steps=12 format=3 uid="uid://b67r7hqfxcqul"]
 
 [ext_resource type="Script" uid="uid://do78dcr355fkx" path="res://scene/actions/fireball_action.gd" id="1_eoakr"]
 [ext_resource type="PackedScene" uid="uid://crwo2y2ot6jp0" path="res://scene/weapons/fireball.tscn" id="2_de53q"]
+[ext_resource type="Texture2D" uid="uid://nudafu8lfuq8" path="res://assets/effect/SPS_Explosion.png" id="3_0mwgw"]
 
-[node name="FireballAction" type="Node"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_4n4a1"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(0, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_38e87"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(64, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5u0d"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(128, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bcpo8"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(192, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2vuwl"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(256, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iq733"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(320, 0, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xxa5s"]
+atlas = ExtResource("3_0mwgw")
+region = Rect2(384, 0, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_6awa1"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4n4a1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_38e87")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5u0d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bcpo8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2vuwl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iq733")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xxa5s")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="FireballAction" type="Node" node_paths=PackedStringArray("range_show")]
 script = ExtResource("1_eoakr")
 fireball_scene = ExtResource("2_de53q")
 action_id = "fireball_action"
 action_name = "Fireball"
 grid_color = Color(0.35026, 0.00103038, 0.860838, 1)
+range_show = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_6awa1")
+autoplay = "default"

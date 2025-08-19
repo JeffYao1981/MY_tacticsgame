@@ -10,6 +10,9 @@
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_b2rvr")
 
+[node name="AnimatedSpriteRangeShow" parent="." index="1"]
+sprite_frames = ExtResource("2_b2rvr")
+
 [node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("3_vxrth")]
 
 [node name="BowAction" parent="ActionsManager" index="1" instance=ExtResource("3_mkkoi")]

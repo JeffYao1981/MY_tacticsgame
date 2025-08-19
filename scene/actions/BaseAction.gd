@@ -6,6 +6,8 @@ class_name BaseAction
 @export var action_name:String
 @export var grid_color:Color = Color.WHITE
 @export var action_point_cost:int = 1
+@export var range_show:AnimatedSprite2D
+
 
 
 var unit: Unit
@@ -15,7 +17,39 @@ var on_action_finished: Callable
 
 func _ready() -> void:
 	unit = owner
+	if range_show == null :
+		print("没有找到图标")
+	
+		
+	#for child in get_children():
+		#if child:
+			#if child is AnimatedSprite2D:
+				#range_show = child
+		#else :
+	#range_show = unit.animated_sprite_range_show	
+	
+	
+	
 
+func set_range_icon() -> void:
+	range_show = null
+	for child in get_children():
+		if child is AnimatedSprite2D:
+			range_show = child
+			break  # 找到就退出循环
+	# 如果没找到，才用 unit 的
+	if range_show == null:
+		range_show = unit.animated_sprite_range_show
+		
+	range_show.z_index = 5
+	range_show.scale = Vector2(0.8,0.8)
+	if range_show == null:
+		print("我是空值")
+	if unit.animated_sprite_range_show == null:
+		print("角色的动画也是空值")
+	
+	
+	
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) ->void:
 	is_active = true
 	self.on_action_finished = on_action_finished
@@ -28,6 +62,7 @@ func finish_action() ->void:
 	on_action_finished.call()
 	if unit.current_action_points >= action_point_cost :
 		GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
+		PlayerActionManager.range_box_switch = true
 	#elif :
 		
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:

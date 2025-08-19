@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://ccfjxf6hsdeic"]
+[gd_scene load_steps=26 format=3 uid="uid://ccfjxf6hsdeic"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_6he8p"]
 [ext_resource type="Texture2D" uid="uid://jik1jj0sac1w" path="res://assets/Tiny Swords (Update 010)/Factions（阵营）/Knights/Troops/Warrior/Blue/Warrior_Blue_3.png" id="2_7myrj"]
@@ -474,6 +474,56 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
 size = Vector2(32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_bmsk7"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(0, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6he8p"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(64, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7myrj"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(128, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g6c66"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(192, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_k8rde"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(256, 64, 64, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_t43us"]
+atlas = ExtResource("2_7myrj")
+region = Rect2(320, 64, 64, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_qnhnx"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bmsk7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6he8p")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7myrj")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g6c66")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_k8rde")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_t43us")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="TinySwordWarriorUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_6he8p")
@@ -494,6 +544,7 @@ autoplay = "idle"
 [node name="ActionsManager" parent="." instance=ExtResource("3_g6c66")]
 
 [node name="NewMoveAction" parent="ActionsManager" instance=ExtResource("4_k8rde")]
+move_range = 3
 
 [node name="TinySwordAction" parent="ActionsManager" instance=ExtResource("6_6he8p")]
 action_id = "tiny_sword_action"
@@ -512,3 +563,10 @@ shape = SubResource("RectangleShape2D_glnlk")
 position = Vector2(-11, -20)
 unit = NodePath("..")
 health = NodePath("../Health")
+
+[node name="AnimatedSpriteRangeShow" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.478431)
+scale = Vector2(1.33333, 1.33333)
+sprite_frames = SubResource("SpriteFrames_qnhnx")
+autoplay = "default"

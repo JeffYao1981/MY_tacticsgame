@@ -55,6 +55,7 @@ var total_distance: float = 0.0
 var previous_position: Vector2
 
 func set_up(finish_action: Callable, unit: Unit, target_grid_position: Vector2i) -> void:
+	
 	self.finish_action = finish_action
 	self.unit = unit
 	self.target_grid_position = target_grid_position

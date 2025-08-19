@@ -18,6 +18,7 @@ func on_state_frame_update(delta:float) -> void:
 		state_changed.emit("EnemyTurnState")
 	
 	
+	
 
 	
 func on_state_exit() -> void:

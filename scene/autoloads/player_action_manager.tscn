@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://crq0g2k244acr"]
+[gd_scene load_steps=3 format=3 uid="uid://crq0g2k244acr"]
 
 [ext_resource type="Script" uid="uid://o0i30afhpd4f" path="res://scene/autoloads/player_action_manager.gd" id="1_8aqqj"]
+[ext_resource type="Texture2D" uid="uid://dflct6xba6lou" path="res://assets/ui/32x32.png" id="2_36y3y"]
 
 [node name="PlayerActionManager" type="Node"]
 script = ExtResource("1_8aqqj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+z_index = 15
+texture = ExtResource("2_36y3y")
+region_enabled = true
+region_rect = Rect2(320, 290, 31, 31)

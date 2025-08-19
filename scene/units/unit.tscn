@@ -24,6 +24,14 @@ autoplay = "idle"
 position = Vector2(3.00001, 6.00001)
 scale = Vector2(0.750002, 0.750002)
 
+[node name="AnimatedSpriteRangeShow" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.478431)
+scale = Vector2(1.33333, 1.33333)
+sprite_frames = ExtResource("2_3fp00")
+animation = &"run"
+autoplay = "run"
+
 [node name="ActionsManager" parent="." instance=ExtResource("3_qt1e6")]
 
 [node name="UnitArea" type="Area2D" parent="."]

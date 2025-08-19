@@ -13,10 +13,6 @@ is_enemy = true
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_rb8c7")
 
-[node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("4_3yg2x")]
-
-[node name="SowrdAction" parent="ActionsManager" index="1" instance=ExtResource("3_mi0a3")]
-
 [node name="AdvancedEnemyAI" type="Node" parent="." index="2" node_paths=PackedStringArray("unit")]
 script = ExtResource("4_3ddqw")
 unit = NodePath("..")
@@ -26,3 +22,7 @@ metadata/_custom_type_script = "uid://cjf16hdrgrafl"
 script = ExtResource("5_gd1wv")
 unit = NodePath("..")
 metadata/_custom_type_script = "uid://dvo00rplx2nh8"
+
+[node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("4_3yg2x")]
+
+[node name="SowrdAction" parent="ActionsManager" index="1" instance=ExtResource("3_mi0a3")]

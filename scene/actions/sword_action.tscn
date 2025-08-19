@@ -1,12 +1,38 @@
-[gd_scene load_steps=3 format=3 uid="uid://bea8cf5degeby"]
+[gd_scene load_steps=7 format=3 uid="uid://bea8cf5degeby"]
 
 [ext_resource type="Script" uid="uid://dit6swn3c62lm" path="res://scene/actions/sword_action.gd" id="1_2lrjr"]
 [ext_resource type="PackedScene" uid="uid://beqjyyr60n2ll" path="res://scene/weapons/sword.tscn" id="2_xworu"]
+[ext_resource type="Texture2D" uid="uid://bqhc077inwv12" path="res://assets/ui/icon/S_Sword01.png" id="3_ree5m"]
+[ext_resource type="Texture2D" uid="uid://dx8vpwvkomv0v" path="res://assets/ui/icon/S_Sword02.png" id="4_6e662"]
+[ext_resource type="Texture2D" uid="uid://cwujc6yq7me80" path="res://assets/ui/icon/S_Sword03.png" id="5_ndgpm"]
 
-[node name="SowrdAction" type="Node"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3w65l"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_ree5m")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_6e662")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_ndgpm")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="SowrdAction" type="Node" node_paths=PackedStringArray("range_show")]
 script = ExtResource("1_2lrjr")
 sword_scene = ExtResource("2_xworu")
 action_id = "sword_action"
 action_name = "Sword"
 grid_color = Color(0.738119, 0.285517, 0.147214, 1)
+range_show = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_3w65l")
+autoplay = "default"

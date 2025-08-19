@@ -10,6 +10,9 @@
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_wprmm")
 
+[node name="AnimatedSpriteRangeShow" parent="." index="1"]
+sprite_frames = ExtResource("2_wprmm")
+
 [node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("3_4nhgg")]
 
 [node name="FireballAction" parent="ActionsManager" index="1" instance=ExtResource("2_grxmv")]

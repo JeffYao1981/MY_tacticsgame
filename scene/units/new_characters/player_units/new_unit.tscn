@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://ddnk4nnmmb1ft"]
+[gd_scene load_steps=28 format=3 uid="uid://ddnk4nnmmb1ft"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_tojlk"]
 [ext_resource type="Texture2D" uid="uid://c5nnjn3vq27aj" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier.png" id="2_wh5i7"]
@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/units/unit_area.gd" id="7_cgikk"]
 [ext_resource type="PackedScene" uid="uid://c5ps30aynrhs6" path="res://scene/units/health.tscn" id="8_5ih7r"]
 [ext_resource type="PackedScene" uid="uid://bcja1yjuhgidg" path="res://scene/ui/unit_word_ui.tscn" id="9_r3wgu"]
+[ext_resource type="Texture2D" uid="uid://d3klli22ofekk" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Walk.png" id="9_tojlk"]
 
 [sub_resource type="Animation" id="Animation_yfcxa"]
 length = 0.001
@@ -303,6 +304,70 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
 size = Vector2(32, 32)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_wh5i7"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n87o7"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4is02"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qpx2h"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ty7ti"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cgikk"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5ih7r"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(600, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_r3wgu"]
+atlas = ExtResource("9_tojlk")
+region = Rect2(700, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_2bpt5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wh5i7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n87o7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4is02")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qpx2h")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ty7ti")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cgikk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5ih7r")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_r3wgu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
 [node name="NewUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_tojlk")
@@ -322,6 +387,7 @@ autoplay = "idle"
 [node name="ActionsManager" parent="." instance=ExtResource("3_n87o7")]
 
 [node name="NewMoveAction" parent="ActionsManager" instance=ExtResource("4_4is02")]
+move_range = 4
 
 [node name="Sword_new_action" parent="ActionsManager" instance=ExtResource("5_qpx2h")]
 action_id = "new_sword_action"
@@ -340,3 +406,10 @@ shape = SubResource("RectangleShape2D_glnlk")
 position = Vector2(-11, -20)
 unit = NodePath("..")
 health = NodePath("../Health")
+
+[node name="AnimatedSpriteRangeShow" type="AnimatedSprite2D" parent="."]
+visible = false
+modulate = Color(1, 1, 1, 0.478431)
+scale = Vector2(1.33333, 1.33333)
+sprite_frames = SubResource("SpriteFrames_2bpt5")
+autoplay = "default"

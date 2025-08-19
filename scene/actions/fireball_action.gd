@@ -4,14 +4,20 @@ class_name FireballAction
 
 @export var fireball_scene: PackedScene
 
+
+
+#在点击了目标之后才会执行的方法，触发来源：PlayerActionManager.try_perform_selected_action()
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> void:
+	#将正在执行打开，回调函数赋值，清空范围显示，扣除相应的行动点
 	super.start_action(target_grid_position, on_action_finished)
 	
+	#控制角色朝向
 	if target_grid_position.x > unit.grid_position.x:
 		unit.animated_sprite_2d.scale = Vector2(1.333,1.333)
 	elif target_grid_position.x < unit.grid_position.x:
 		unit.animated_sprite_2d.scale = Vector2(-1.333,1.333)
 	
+	#控制生成火球
 	var fireball:Projectile = fireball_scene.instantiate()
 	get_tree().current_scene.add_child(fireball)
 	fireball.global_position = unit.weapon_slot.global_position

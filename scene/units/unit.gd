@@ -11,6 +11,7 @@ signal action_point_changed(action_point: int)
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 @onready var sprite_2d: Sprite2D = $Sprite2D
 @onready var weapon_slot_2: Node2D = $WeaponSlot2
+@onready var animated_sprite_range_show: AnimatedSprite2D = $AnimatedSpriteRangeShow
 
 
 

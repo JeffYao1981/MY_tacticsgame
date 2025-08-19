@@ -46,9 +46,6 @@ func get_nav_grid_path(start_grid_position:Vector2i,end_grid_position:Vector2i) 
 		return []
 	
 	return nav_layer.a_star.get_id_path(start_grid_position, end_grid_position)
-	
-
-
 
 
 func get_nav_world_path(start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2]:
@@ -72,8 +69,6 @@ func get_grid_path_length(grid_path:Array[Vector2i]) -> float:
 			length += 1
 	return length
 	
-	
-	
 func is_valid_grid(grid_position: Vector2i) -> bool:  #是否是有效的网格valid：有效的
 	return nav_layer.grid_data_dict.has(grid_position)
 
@@ -85,7 +80,7 @@ func set_grid_walkable(grid_position:Vector2i,walkable:bool) ->void:#如果不�
 		return
 	
 	nav_layer.grid_data_dict[grid_position].walkable = walkable
-	
+	#nav_layer.a_star.set_cell_obstacle(grid_position,walkable)
 
 func is_grid_occupied(grid_position:Vector2i) ->bool: #获取网格是否已经被单位占据
 	return is_valid_grid(grid_position) and nav_layer.grid_data_dict[grid_position].is_occupied_by_uint()
@@ -106,10 +101,7 @@ func visualize_grids(grids:Array[Vector2i],color:Color = Color.WHITE) -> void:
 	visual_layer.set_cells_terrain_connect(grids,0,0)
 
 
-	
-	
-	
-	
+
 	
 	
 	

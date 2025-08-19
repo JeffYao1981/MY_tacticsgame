@@ -1,12 +1,40 @@
-[gd_scene load_steps=3 format=3 uid="uid://doj66q6m8rpx5"]
+[gd_scene load_steps=7 format=3 uid="uid://doj66q6m8rpx5"]
 
 [ext_resource type="Script" uid="uid://hhgelhfwrfw7" path="res://scene/actions/bow_action.gd" id="1_cke65"]
 [ext_resource type="PackedScene" uid="uid://cf10d3gn0ac6f" path="res://scene/weapons/bow.tscn" id="2_xyla5"]
+[ext_resource type="Texture2D" uid="uid://b51e6rrrha4e6" path="res://assets/ui/icon/S_Bow01.png" id="3_7vkda"]
+[ext_resource type="Texture2D" uid="uid://dhe2mfhf0nru1" path="res://assets/ui/icon/S_Bow03.png" id="4_jqpgm"]
+[ext_resource type="Texture2D" uid="uid://dqfsegtcjkfce" path="res://assets/ui/icon/S_Bow02.png" id="5_4te8q"]
 
-[node name="BowAction" type="Node"]
+[sub_resource type="SpriteFrames" id="SpriteFrames_rjt6f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_7vkda")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jqpgm")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_4te8q")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="BowAction" type="Node" node_paths=PackedStringArray("range_show")]
 script = ExtResource("1_cke65")
 bow_scene = ExtResource("2_xyla5")
 action_id = "bow_action"
 action_name = "Bow"
 grid_color = Color(0.809523, 0.809524, 0, 1)
+range_show = NodePath("Sprite2D")
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
+
+[node name="Sprite2D" type="AnimatedSprite2D" parent="."]
+visible = false
+sprite_frames = SubResource("SpriteFrames_rjt6f")
+autoplay = "default"
+frame = 1
+frame_progress = 0.254839

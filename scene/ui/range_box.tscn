@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://dwpcled2sfhh"]
+
+[ext_resource type="Texture2D" uid="uid://b1eldbwg0v3gw" path="res://assets/ui/SPS_Items.png" id="1_8d4j1"]
+
+[node name="RangeBox" type="Sprite2D"]
+visible = false
+texture = ExtResource("1_8d4j1")
+region_enabled = true
+region_rect = Rect2(48, 47.8134, 7.77697, 8.18656)
