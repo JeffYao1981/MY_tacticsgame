@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://i3rgvw2gntke"]
+[gd_scene load_steps=6 format=4 uid="uid://i3rgvw2gntke"]
 
 [ext_resource type="PackedScene" uid="uid://nrsx7ey1xhyq" path="res://scene/leven_scene.tscn" id="1_af58q"]
 [ext_resource type="TileSet" uid="uid://ctm486adhy6j2" path="res://resources/dungeon_sword_tile_set.tres" id="2_04tv3"]
+[ext_resource type="PackedScene" uid="uid://c3if7c05ge0wn" path="res://scene/units/enemy_units/enemy_archer_unit.tscn" id="4_lodck"]
 [ext_resource type="PackedScene" uid="uid://bhekswvojg3qb" path="res://scene/units/enemy_units/enemy_wizard_unit.tscn" id="4_vht7m"]
+[ext_resource type="PackedScene" uid="uid://bn3y7vqhks3f7" path="res://scene/units/enemy_units/enemy_knight_unit.tscn" id="5_mv7wp"]
 
 [node name="LevelScene" instance=ExtResource("1_af58q")]
 
@@ -53,7 +55,22 @@ position = Vector2(239, 366)
 position = Vector2(206, 80)
 
 [node name="EnemyWizardUnit" parent="EnemyUnits" index="0" instance=ExtResource("4_vht7m")]
-position = Vector2(81, 208)
+position = Vector2(208, 272)
+
+[node name="EnemyArcherUnit" parent="EnemyUnits" index="1" instance=ExtResource("4_lodck")]
+position = Vector2(336, 400)
+
+[node name="EnemyKnightUnit" parent="EnemyUnits" index="2" instance=ExtResource("5_mv7wp")]
+position = Vector2(240, 240)
+
+[node name="EnemyWizardUnit2" parent="EnemyUnits" index="3" instance=ExtResource("4_vht7m")]
+position = Vector2(335, 112)
+
+[node name="EnemyArcherUnit2" parent="EnemyUnits" index="4" instance=ExtResource("4_lodck")]
+position = Vector2(274, 141)
+
+[node name="EnemyKnightUnit2" parent="EnemyUnits" index="5" instance=ExtResource("5_mv7wp")]
+position = Vector2(48, 400)
 
 [node name="CollisionShape2D" parent="CameraBoundary" index="0"]
 position = Vector2(-34, -4)

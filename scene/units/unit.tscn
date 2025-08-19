@@ -17,7 +17,7 @@ script = ExtResource("1_fmkjs")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 scale = Vector2(1.33333, 1.33333)
 sprite_frames = ExtResource("2_3fp00")
-animation = &"run"
+animation = &"die"
 autoplay = "idle"
 
 [node name="WeaponSlot" type="Node2D" parent="AnimatedSprite2D"]

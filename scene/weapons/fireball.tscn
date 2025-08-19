@@ -43,6 +43,7 @@ animations = [{
 [node name="Fireball" type="Node2D"]
 script = ExtResource("1_l6742")
 impact_effect_scene = ExtResource("2_mn5ms")
+speed = 80
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 rotation = 1.5708

@@ -1,6 +1,38 @@
-[gd_resource type="SpriteFrames" load_steps=6 format=3 uid="uid://cpp87stm7mexi"]
+[gd_resource type="SpriteFrames" load_steps=14 format=3 uid="uid://cpp87stm7mexi"]
 
 [ext_resource type="Texture2D" uid="uid://df12t6kypnva2" path="res://assets/characters/Knight.png" id="1_65fad"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6o540"]
+atlas = ExtResource("1_65fad")
+region = Rect2(0, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qhtc6"]
+atlas = ExtResource("1_65fad")
+region = Rect2(24, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_dnj73"]
+atlas = ExtResource("1_65fad")
+region = Rect2(48, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qtjx0"]
+atlas = ExtResource("1_65fad")
+region = Rect2(72, 72, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5d7mo"]
+atlas = ExtResource("1_65fad")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ytjp8"]
+atlas = ExtResource("1_65fad")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_whk2j"]
+atlas = ExtResource("1_65fad")
+region = Rect2(48, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_fn5xh"]
+atlas = ExtResource("1_65fad")
+region = Rect2(72, 0, 24, 24)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_65fad"]
 atlas = ExtResource("1_65fad")
@@ -20,6 +52,40 @@ region = Rect2(72, 24, 24, 24)
 
 [resource]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6o540")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qhtc6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_dnj73")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qtjx0")
+}],
+"loop": true,
+"name": &"die",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5d7mo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ytjp8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_whk2j")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_fn5xh")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_65fad")

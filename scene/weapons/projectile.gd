@@ -86,10 +86,10 @@ func _process(delta: float) -> void:
 		# 到达目标
 		global_position = target_world_position
 		
-		if impact_effect_scene != null:
-			var impact_effect: Node2D = impact_effect_scene.instantiate()
-			get_tree().current_scene.add_child(impact_effect)
-			impact_effect.global_position = global_position
+		#if impact_effect_scene != null:
+			#var impact_effect: Node2D = impact_effect_scene.instantiate()
+			#get_tree().current_scene.add_child(impact_effect)
+			#impact_effect.global_position = global_position
 			
 		deal_damage()
 		finish_action.call()

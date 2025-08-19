@@ -17,20 +17,8 @@ var on_action_finished: Callable
 
 func _ready() -> void:
 	unit = owner
-	if range_show == null :
-		print("没有找到图标")
-	
-		
-	#for child in get_children():
-		#if child:
-			#if child is AnimatedSprite2D:
-				#range_show = child
-		#else :
-	#range_show = unit.animated_sprite_range_show	
-	
-	
-	
 
+	
 func set_range_icon() -> void:
 	range_show = null
 	for child in get_children():
@@ -42,7 +30,7 @@ func set_range_icon() -> void:
 		range_show = unit.animated_sprite_range_show
 		
 	range_show.z_index = 5
-	range_show.scale = Vector2(0.8,0.8)
+	
 	if range_show == null:
 		print("我是空值")
 	if unit.animated_sprite_range_show == null:

@@ -11,6 +11,7 @@
 is_enemy = true
 
 [node name="AnimatedSprite2D" parent="." index="0"]
+position = Vector2(0, -4)
 sprite_frames = ExtResource("2_rb8c7")
 
 [node name="AdvancedEnemyAI" type="Node" parent="." index="2" node_paths=PackedStringArray("unit")]

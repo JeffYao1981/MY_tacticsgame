@@ -57,10 +57,12 @@ animations = [{
 }],
 "loop": false,
 "name": &"default",
-"speed": 10.0
+"speed": 8.0
 }]
 
 [node name="ImpactEffect" type="AnimatedSprite2D"]
+z_index = 10
+position = Vector2(1, 0)
 sprite_frames = SubResource("SpriteFrames_akpcq")
 autoplay = "default"
 frame = 6

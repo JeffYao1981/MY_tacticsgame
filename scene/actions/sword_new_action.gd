@@ -11,11 +11,17 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	
 	if target_position.x > unit.grid_position.x:
 		unit.sprite_2d.scale = Vector2(1,1)
+		unit.animation_player.play("sword_attack_side")
 		
 	elif target_position.x < unit.grid_position.x:
 		unit.sprite_2d.scale = Vector2(-1,1)
-		
-	unit.animation_player.play("sword_attack_side")
+		unit.animation_player.play("sword_attack_side")
+	
+	elif target_position.y < unit.grid_position.y:
+		unit.animation_player.play("sword_attack_top_1")
+	
+	elif target_position.y > unit.grid_position.y:
+		unit.animation_player.play("sword_attack_button_1")
 	
 	
 	

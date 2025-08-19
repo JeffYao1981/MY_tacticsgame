@@ -19,10 +19,10 @@ func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->v
 	
 func move(target_global_position:Vector2,delta: float) -> void:
 	if unit.global_position.x > target_global_position.x:
-		unit.animated_sprite_2d.scale = Vector2(-1.333,1.333)
+		unit.animated_sprite_2d.scale = Vector2(-1.0,1.0)
 		print("翻转")
 	if unit.global_position.x < target_global_position.x:
-		unit.animated_sprite_2d.scale = Vector2(1.333,1.333)
+		unit.animated_sprite_2d.scale = Vector2(1.0,1.0)
 	unit.global_position = unit.global_position.move_toward(target_global_position,move_speed*delta)
 	
 		

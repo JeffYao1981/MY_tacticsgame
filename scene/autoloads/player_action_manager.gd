@@ -42,22 +42,51 @@ func set_selected_action(action:BaseAction) ->void:
 	
 	
 
+#func range_box_move(delta: float) -> void:
+	#var new_mouse_grid_position = GridManager.get_mouse_grid_position()
+	#
+	#if selected_action.get_action_grids().has(new_mouse_grid_position):
+		#selected_action.range_show.visible = true
+		##selected_action.range_show.visible = true
+	#
+		#
+		#var unit_world_x = GridManager.get_world_position(selected_unit.grid_position).x
+	#
+	#
+		#if mouse_grid_position.x >= unit_world_x:
+			#selected_action.range_show.scale = Vector2(1, 1)
+		#else:
+			#selected_action.range_show.scale = Vector2(-1, 1)	
+			#
+		#if new_mouse_grid_position != mouse_grid_position:
+			#mouse_grid_position = new_mouse_grid_position
+			##selected_action.range_show.global_position = GridManager.get_world_position(mouse_grid_position)
+			#selected_action.range_show.global_position = GridManager.get_world_position(mouse_grid_position)
+			#
+		#else :
+			##selected_action.range_show.visible = false
+			#selected_action.range_show.visible = false
+		
+
 func range_box_move(delta: float) -> void:
 	var new_mouse_grid_position = GridManager.get_mouse_grid_position()
 	
 	if selected_action.get_action_grids().has(new_mouse_grid_position):
-		#selected_action.range_show.visible = true
 		selected_action.range_show.visible = true
-		print("我显示出来了")
-		if new_mouse_grid_position != mouse_grid_position:
-			mouse_grid_position = new_mouse_grid_position
-			#selected_action.range_show.global_position = GridManager.get_world_position(mouse_grid_position)
-			selected_action.range_show.global_position = GridManager.get_world_position(mouse_grid_position)
-			print("我的位置是：",mouse_grid_position)
-	else :
-		#selected_action.range_show.visible = false
+		
+		var unit_world_x = GridManager.get_world_position(selected_unit.grid_position).x
+		
+		# 直接用 new_mouse_grid_position 判断方向
+		if new_mouse_grid_position.x >= selected_unit.grid_position.x:
+			selected_action.range_show.scale = Vector2(1, 1)
+		else:
+			selected_action.range_show.scale = Vector2(-1, 1)
+		
+		# 更新位置
+		mouse_grid_position = new_mouse_grid_position
+		selected_action.range_show.global_position = GridManager.get_world_position(mouse_grid_position)
+	else:
 		selected_action.range_show.visible = false
-		print("我关闭了")
 		
 		
 func _process(delta: float) -> void:
