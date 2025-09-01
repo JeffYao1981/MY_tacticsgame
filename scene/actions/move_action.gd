@@ -8,19 +8,23 @@ var move_speed: float = 100
 func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->void:
 	super.start_action(target_gird_position,on_action_finished)
 	
-	path = GridManager.get_nav_world_path(unit.grid_position,target_gird_position)
+	path = GridManager.get_nav_world_path(unit,unit.grid_position,target_gird_position)
 	
 	GridManager.set_grid_walkable(unit.grid_position,true)
 	GridManager.set_grid_occupied(unit.grid_position,null)
+	GridManager.nav_layer.a_star.set_point_solid(unit.grid_position,false)
+	
 	GridManager.set_grid_walkable(target_gird_position,false)
 	GridManager.set_grid_occupied(target_gird_position,unit)
-	
+	if unit.is_enemy:
+		GridManager.nav_layer.a_star.set_point_solid(target_gird_position)
+		
 	unit.animated_sprite_2d.play("run")
 	
 func move(target_global_position:Vector2,delta: float) -> void:
 	if unit.global_position.x > target_global_position.x:
 		unit.animated_sprite_2d.scale = Vector2(-1.0,1.0)
-		print("翻转")
+		
 	if unit.global_position.x < target_global_position.x:
 		unit.animated_sprite_2d.scale = Vector2(1.0,1.0)
 	unit.global_position = unit.global_position.move_toward(target_global_position,move_speed*delta)
@@ -48,7 +52,7 @@ func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i
 			if i == 0 and j == 0:
 				continue
 			var potential_grid : Vector2i = unit_grid + Vector2i(i,j)#目标格子
-			var gird_path = GridManager.get_nav_grid_path(unit_grid,potential_grid)
+			var gird_path = GridManager.get_nav_grid_path(unit,unit_grid,potential_grid)
 			var length = GridManager.get_grid_path_length(gird_path)
 			if length <= max_length and length > 0 and GridManager.is_grid_walkable(potential_grid):#路线长度于等于最大长度（移动力），且大于0（不是原地），且被标记为可移动的网格
 				results.append(potential_grid)

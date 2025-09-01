@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="3_4nhgg"]
 
 [node name="WizardUnit" instance=ExtResource("1_yi576")]
+unit_type = 2
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_wprmm")

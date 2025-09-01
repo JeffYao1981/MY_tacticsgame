@@ -1,9 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://vcq027y1uk84"]
+[gd_scene load_steps=8 format=3 uid="uid://vcq027y1uk84"]
 
+[ext_resource type="Theme" uid="uid://b0gqc6ia53pnm" path="res://resources/ui_theme.tres" id="1_3r1vn"]
 [ext_resource type="Script" uid="uid://cx2op28btrack" path="res://scene/ui/unit_actions_ui.gd" id="1_xneuj"]
 [ext_resource type="PackedScene" uid="uid://d3kxmkv86rhke" path="res://scene/ui/action_card_ui.tscn" id="2_5ty5x"]
 [ext_resource type="Script" uid="uid://et2ux3ymtmsr" path="res://scene/ui/turn_ui.gd" id="3_5ty5x"]
 [ext_resource type="Script" uid="uid://dnsgviajnyfgn" path="res://scene/ui/game_end_ui.gd" id="4_2lu2n"]
+[ext_resource type="Texture2D" uid="uid://cmyjm1e3vib58" path="res://assets/ui/Banners/Banner_Horizontal.png" id="6_12hny"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_4r250"]
+texture = ExtResource("6_12hny")
+texture_margin_left = 30.0
+texture_margin_top = 17.0
+texture_margin_right = 30.0
+texture_margin_bottom = 31.0
+region_rect = Rect2(33, 47, 126, 123)
 
 [node name="GameUI" type="CanvasLayer"]
 
@@ -13,6 +23,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_3r1vn")
 theme_override_constants/margin_bottom = 16
 script = ExtResource("1_xneuj")
 action_card_ui_scene = ExtResource("2_5ty5x")
@@ -33,6 +44,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+theme = ExtResource("1_3r1vn")
 theme_override_constants/margin_left = 32
 theme_override_constants/margin_top = 32
 theme_override_constants/margin_right = 32
@@ -67,9 +79,11 @@ custom_minimum_size = Vector2(280, 192)
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_styles/panel = SubResource("StyleBoxTexture_4r250")
 
 [node name="MarginContainer" type="MarginContainer" parent="GameEndUI/PanelContainer"]
 layout_mode = 2
+theme = ExtResource("1_3r1vn")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameEndUI/PanelContainer/MarginContainer"]
 layout_mode = 2
@@ -80,6 +94,7 @@ theme_override_constants/separation = 8
 [node name="Label" type="Label" parent="GameEndUI/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 30
 text = "Game Over"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -88,4 +103,5 @@ vertical_alignment = 1
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme_override_font_sizes/font_size = 20
 text = "Exit"

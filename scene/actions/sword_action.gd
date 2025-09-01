@@ -2,6 +2,7 @@ extends BaseAction
 class_name SwordAction
 
 @export var sword_scene: PackedScene
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> void:
 	super.start_action(target_grid_position, on_action_finished)
@@ -15,6 +16,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	unit.weapon_slot.add_child(sword)
 	sword.set_up(finish_action,unit,target_grid_position)
 	
+	audio_stream_player.play()
 	
 	
 

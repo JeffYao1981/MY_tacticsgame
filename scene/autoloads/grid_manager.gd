@@ -7,6 +7,8 @@ var visual_layer:TileMapLayer
 var map_width: int = 0
 var map_height: int = 0
 
+
+
 func _ready():
 	calculate_map_size()
 	
@@ -41,15 +43,18 @@ func get_mouse_world_position() -> Vector2:#获取鼠标的世界坐标
 func get_mouse_grid_position() -> Vector2i:#获取鼠标所在的网格索引坐标
 	return get_grid_position(get_mouse_world_position())
 	
-func get_nav_grid_path(start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2i]:#获取路径网格数组
+func get_nav_grid_path(unit:Unit, start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2i]:#获取路径网格数组
 	if not is_valid_grid(start_grid_position) or not is_valid_grid(end_grid_position):
 		return []
 	
-	return nav_layer.a_star.get_id_path(start_grid_position, end_grid_position)
+	#return nav_layer.a_star.get_id_path(start_grid_position, end_grid_position)
+	apply_dynamic_blockers(unit)
+	var path = nav_layer.a_star.get_id_path(start_grid_position, end_grid_position)
+	clear_dynamic_blockers()
+	return path
 
-
-func get_nav_world_path(start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2]:
-	var grid_path := get_nav_grid_path(start_grid_position,end_grid_position)
+func get_nav_world_path(unit:Unit,start_grid_position:Vector2i,end_grid_position:Vector2i) -> Array[Vector2]:
+	var grid_path := get_nav_grid_path(unit,start_grid_position,end_grid_position)
 	var world_path :Array[Vector2] = []
 	for grid_position in grid_path:
 		var world_position = get_world_position(grid_position)
@@ -101,7 +106,35 @@ func visualize_grids(grids:Array[Vector2i],color:Color = Color.WHITE) -> void:
 	visual_layer.set_cells_terrain_connect(grids,0,0)
 
 
+func apply_dynamic_blockers(unit:Unit):
+	for other in GameManager.all_units:
+		if other == unit:
+			continue
+		if not can_pass_through(unit, other):
+			nav_layer.a_star.set_point_solid(other.grid_position, true)
 
+func clear_dynamic_blockers():
+	for other in GameManager.all_units:
+		nav_layer.a_star.set_point_solid(other.grid_position, false)
+
+
+func can_pass_through(unit:Unit, other:Unit) -> bool:
+	# 同阵营友军：可以直接穿透
+	if unit.is_enemy == other.is_enemy:
+		return true
+
+	# 基于单位类型判断
+	
+	match unit.unit_type:
+		
+		unit.UnitType.FLYING:
+			return true  # 飞行单位无视所有阻挡
+		unit.UnitType.PHASE:
+			return true  # 穿透技能无视所有阻挡
+		unit.UnitType.INFANTRY, unit.UnitType.CAVALRY:
+			return false # 步兵、骑兵默认不能穿敌军
+		_:
+			return false
 	
 	
 	

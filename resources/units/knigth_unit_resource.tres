@@ -12,6 +12,6 @@ region = Rect2(0, 1, 24, 24)
 script = ExtResource("1_f6yir")
 unit_icon = SubResource("AtlasTexture_8xl3h")
 unit_name = "knight"
-unit_description = "防御力强，近战攻击。"
+unit_description = "防御力强，近战攻击。近战攻击，防御力高13我2321321321313213213213213213213213213213恶趣味挖的撒发热无法撒旦发我"
 unit_scene = ExtResource("3_vuira")
 metadata/_custom_type_script = "uid://dpquwsx8q5sek"

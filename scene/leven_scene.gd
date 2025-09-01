@@ -16,6 +16,7 @@ func _ready() -> void:
 	for unit:Unit in GameManager.enemy_units:
 		GridManager.set_grid_walkable(unit.grid_position,false)
 		GridManager.set_grid_occupied(unit.grid_position,unit)
+		GridManager.nav_layer.a_star.set_point_solid(unit.grid_position)
 	
 	if not GameManager.player_units.is_empty():
 		var unit:Unit = GameManager.player_units[0]

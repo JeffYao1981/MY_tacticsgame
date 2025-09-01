@@ -69,9 +69,15 @@ func set_selected_action(action:BaseAction) ->void:
 		
 
 func range_box_move(delta: float) -> void:
+	
 	var new_mouse_grid_position = GridManager.get_mouse_grid_position()
 	
+	if not is_instance_valid(selected_action) or not is_instance_valid(selected_unit):#角色死亡被注销后的逻辑
+		
+		return
+	
 	if selected_action.get_action_grids().has(new_mouse_grid_position):
+		
 		selected_action.range_show.visible = true
 		
 		var unit_world_x = GridManager.get_world_position(selected_unit.grid_position).x

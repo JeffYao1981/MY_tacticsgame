@@ -5,6 +5,7 @@ extends MarginContainer
 
 
 func _ready() -> void:
+	AudioManager.register_button(end_turn_button)
 	end_turn_button.pressed.connect(on_end_turn_button_pressed)
 	TurnManager.player_turn_started.connect(on_player_turn_started)
 	TurnManager.enemy_turn_started.connect(on_enemy_turn_started)

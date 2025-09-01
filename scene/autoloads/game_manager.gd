@@ -9,6 +9,7 @@ var maximum_unit_count:int = 3
 
 var player_units:Array[Unit]
 var enemy_units:Array[Unit]
+var all_units:Array[Unit]
 
 
 
@@ -18,15 +19,20 @@ func register_unit(unit:Unit) -> void:
 	else:
 		player_units.append(unit)
 	unit.unit_died.connect(on_unit_died)
+	all_units.append(unit)
+	
 
 func unregister_unit(unit:Unit) ->void:
 	if unit.is_enemy:
 		enemy_units.erase(unit)
+		
 	else:
 		player_units.erase(unit)
 		if PlayerActionManager.selected_unit == unit and not player_units.is_empty():
 			PlayerActionManager.set_selected_unit(player_units[0])
-
+	all_units.erase(unit)
+	
+	
 func spawn_player_units() -> void: #生成玩家角色
 	var spawn_position_idx: int = 0	#索引
 	var spawn_positions:Array[Node2D] = get_tree().current_scene.player_spawn_positions	#将当前场景下指定的角色出生点列表赋值过来
@@ -40,6 +46,7 @@ func spawn_player_units() -> void: #生成玩家角色
 func on_unit_died(unit:Unit) -> void:
 	if unit.is_enemy and enemy_units.is_empty():
 		print("GameWin")
+		SaveManager.save_data(selected_level_resource.level_name)
 		game_win.emit()
 	if not unit.is_enemy and player_units.is_empty():
 		print("GameOver")

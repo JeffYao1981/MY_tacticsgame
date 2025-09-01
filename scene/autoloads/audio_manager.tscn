@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://b3jxuhsx62y4l"]
+
+[ext_resource type="Script" uid="uid://caf434nky2aka" path="res://scene/autoloads/audio_manager.gd" id="1_68tlv"]
+[ext_resource type="AudioStream" uid="uid://djhy60lrfv4w2" path="res://assets/sounds/SFX_Select.wav" id="2_h56mk"]
+[ext_resource type="AudioStream" uid="uid://dhyfxpyii6bu1" path="res://assets/sounds/BackgroundMusic.wav" id="3_3sc35"]
+
+[node name="AudioManager" type="Node"]
+script = ExtResource("1_68tlv")
+
+[node name="ClickSoundPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_h56mk")
+
+[node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_3sc35")
+autoplay = true

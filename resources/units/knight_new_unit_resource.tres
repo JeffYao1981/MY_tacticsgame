@@ -12,6 +12,6 @@ region = Rect2(33.8499, 32.4926, 34.0293, 34.8207)
 script = ExtResource("1_ki085")
 unit_icon = SubResource("AtlasTexture_3ensq")
 unit_name = "soldier"
-unit_description = "多功能角色，可以装备弓箭"
+unit_description = "多功能角色，可以装备弓箭，近战攻击，防御力高13我2321321321313213213213213213213213213213恶趣味挖的撒发热无法撒旦发我"
 unit_scene = ExtResource("3_nlhbt")
 metadata/_custom_type_script = "uid://dpquwsx8q5sek"

@@ -1,6 +1,8 @@
 extends BaseAction
 class_name BowAction
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
+
 @export var bow_scene: PackedScene
 
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> void:
@@ -14,6 +16,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	var bow:Bow = bow_scene.instantiate()
 	unit.weapon_slot.add_child(bow)
 	bow.set_up(finish_action,unit,target_grid_position)
+	audio_stream_player.play()
 
 
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:

@@ -13,12 +13,27 @@ signal action_point_changed(action_point: int)
 @onready var weapon_slot_2: Node2D = $WeaponSlot2
 @onready var animated_sprite_range_show: AnimatedSprite2D = $AnimatedSpriteRangeShow
 
+@onready var unit_hit_sound_player: AudioStreamPlayer = $Sound/UnitHitSoundPlayer
+@onready var unit_dead_sound_player: AudioStreamPlayer = $Sound/UnitDeadSoundPlayer
 
 
 
 @onready var actions_manager: ActionManager = $ActionsManager
 @export var is_enemy : bool = false  #可以做成枚举，添加中立单位
 @export var action_points:int = 2
+
+enum UnitType {
+	INFANTRY,   # 步兵
+	CAVALRY,    # 骑兵
+	FLYING,     # 飞行单位
+	PHASE,      # 穿透单位
+}
+
+@export var unit_type: UnitType = UnitType.INFANTRY
+
+
+
+
 
 var current_action_points:int:
 	set (value):
@@ -45,6 +60,7 @@ func take_damage(damage_amount:int) -> void:
 	print(name + "受到了"+ str(damage_amount)+"点伤害")
 	health.take_damage(damage_amount)
 	
+	
 func on_player_turn_started() -> void:
 	if is_enemy:
 		return
@@ -63,6 +79,7 @@ func die() ->void:
 	GridManager.set_grid_occupied(grid_position,null)
 	GridManager.set_grid_walkable(grid_position,true)
 	GameManager.unregister_unit(self)
+	unit_dead_sound_player.play()
 	unit_died.emit(self)
 	if animated_sprite_2d :
 		animated_sprite_2d.play("die")

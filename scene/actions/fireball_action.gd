@@ -4,6 +4,7 @@ class_name FireballAction
 
 @export var fireball_scene: PackedScene
 
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 
 #在点击了目标之后才会执行的方法，触发来源：PlayerActionManager.try_perform_selected_action()
@@ -22,7 +23,8 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	get_tree().current_scene.add_child(fireball)
 	fireball.global_position = unit.weapon_slot.global_position
 	fireball.set_up(finish_action,unit,target_grid_position)
-
+	audio_stream_player.play()
+	
 #func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	#var results: Array[Vector2i] = []
 	#var max_range = 3

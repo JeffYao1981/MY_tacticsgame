@@ -6,9 +6,6 @@
 
 [node name="KnightUnit" instance=ExtResource("1_nejob")]
 
-[node name="AnimatedSprite2D" parent="." index="0"]
-animation = &"idle"
-
 [node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("2_3vyws")]
 
 [node name="SowrdAction" parent="ActionsManager" index="1" instance=ExtResource("3_3vyws")]

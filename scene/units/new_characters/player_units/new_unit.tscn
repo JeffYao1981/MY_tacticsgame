@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://ddnk4nnmmb1ft"]
+[gd_scene load_steps=33 format=3 uid="uid://ddnk4nnmmb1ft"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_tojlk"]
 [ext_resource type="Texture2D" uid="uid://c5nnjn3vq27aj" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier.png" id="2_wh5i7"]
@@ -9,6 +9,10 @@
 [ext_resource type="PackedScene" uid="uid://c5ps30aynrhs6" path="res://scene/units/health.tscn" id="8_5ih7r"]
 [ext_resource type="PackedScene" uid="uid://bcja1yjuhgidg" path="res://scene/ui/unit_word_ui.tscn" id="9_r3wgu"]
 [ext_resource type="Texture2D" uid="uid://d3klli22ofekk" path="res://assets/Characters(100x100)/Soldier/Soldier with shadows/Soldier-Walk.png" id="9_tojlk"]
+[ext_resource type="AudioStream" uid="uid://d17gwb0hokcqd" path="res://assets/sounds/SFX_Hit_1.wav" id="10_qpx2h"]
+[ext_resource type="AudioStream" uid="uid://dim7pgohv2txi" path="res://assets/sounds/SFX_Hit_2.wav" id="11_ty7ti"]
+[ext_resource type="AudioStream" uid="uid://dsk4ynh04d5xu" path="res://assets/sounds/SFX_Hit_3.wav" id="12_cgikk"]
+[ext_resource type="AudioStream" uid="uid://du1183vga1uma" path="res://assets/sounds/SFX_Death.wav" id="13_5ih7r"]
 
 [sub_resource type="Animation" id="Animation_yfcxa"]
 length = 0.001
@@ -486,6 +490,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_r3wgu"]
+streams_count = 3
+stream_0/stream = ExtResource("10_qpx2h")
+stream_1/stream = ExtResource("11_ty7ti")
+stream_2/stream = ExtResource("12_cgikk")
+
 [node name="NewUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_tojlk")
@@ -531,3 +541,11 @@ modulate = Color(1, 1, 1, 0.478431)
 scale = Vector2(1.33333, 1.33333)
 sprite_frames = SubResource("SpriteFrames_2bpt5")
 autoplay = "default"
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="UnitHitSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = SubResource("AudioStreamRandomizer_r3wgu")
+
+[node name="UnitDeadSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("13_5ih7r")

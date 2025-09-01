@@ -14,6 +14,7 @@ func _ready() -> void:
 	pressed.connect(on_button_pressed)#监听按钮按下的信号
 	mouse_entered.connect(on_mouse_entered)#监听鼠标悬停信号
 	select_indicatior.visible = false
+	AudioManager.register_button(self)
 
 func set_up(unit_resource:UnitResource) -> void:#设置
 	self.unit_resource = unit_resource	#本unit_resource等于传过来的unit_resource

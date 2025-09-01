@@ -1,9 +1,22 @@
-[gd_scene load_steps=2 format=3 uid="uid://d3kxmkv86rhke"]
+[gd_scene load_steps=3 format=3 uid="uid://d3kxmkv86rhke"]
 
 [ext_resource type="Script" uid="uid://drp7bnnnqok3j" path="res://scene/ui/action_card_ui.gd" id="1_dvo7f"]
+[ext_resource type="Theme" uid="uid://b0gqc6ia53pnm" path="res://resources/ui_theme.tres" id="1_yxpmi"]
 
 [node name="ActionCardUI" type="Button"]
 custom_minimum_size = Vector2(32, 32)
-text = "Action
+offset_right = 32.0
+offset_bottom = 34.0
+theme = ExtResource("1_yxpmi")
+text = "
 "
 script = ExtResource("1_dvo7f")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(20, 20)
+layout_mode = 0
+offset_left = 5.5
+offset_top = 5.5
+offset_right = 25.5
+offset_bottom = 25.5
+expand_mode = 2

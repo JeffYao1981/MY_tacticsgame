@@ -12,6 +12,6 @@ region = Rect2(0, 1, 24, 24)
 script = ExtResource("1_g8x0c")
 unit_icon = SubResource("AtlasTexture_jvucj")
 unit_name = "Wizard"
-unit_description = "大范围攻击"
+unit_description = "大范围攻击近战攻击，防御力高13我2321321321313213213213213213213213213213恶趣味挖的撒发热无法撒旦发我"
 unit_scene = ExtResource("3_hhy0q")
 metadata/_custom_type_script = "uid://dpquwsx8q5sek"

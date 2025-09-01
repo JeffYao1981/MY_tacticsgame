@@ -1,14 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://c4v4omxy7xpxw"]
+[gd_scene load_steps=13 format=3 uid="uid://c4v4omxy7xpxw"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_fmkjs"]
 [ext_resource type="SpriteFrames" uid="uid://cpp87stm7mexi" path="res://resources/animations/player_animations/knight_animation.tres" id="2_3fp00"]
 [ext_resource type="PackedScene" uid="uid://c1v06nm46bxvf" path="res://scene/Managers/actions_manager.tscn" id="3_qt1e6"]
 [ext_resource type="PackedScene" uid="uid://c5ps30aynrhs6" path="res://scene/units/health.tscn" id="6_leatx"]
 [ext_resource type="PackedScene" uid="uid://bcja1yjuhgidg" path="res://scene/ui/unit_word_ui.tscn" id="7_d3prr"]
+[ext_resource type="AudioStream" uid="uid://d17gwb0hokcqd" path="res://assets/sounds/SFX_Hit_1.wav" id="7_q4kqk"]
 [ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/units/unit_area.gd" id="8_0o3le"]
+[ext_resource type="AudioStream" uid="uid://dim7pgohv2txi" path="res://assets/sounds/SFX_Hit_2.wav" id="8_injid"]
+[ext_resource type="AudioStream" uid="uid://du1183vga1uma" path="res://assets/sounds/SFX_Death.wav" id="9_q4kqk"]
+[ext_resource type="AudioStream" uid="uid://dsk4ynh04d5xu" path="res://assets/sounds/SFX_Hit_3.wav" id="9_r6v2m"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_glnlk"]
 size = Vector2(32, 32)
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_55h4j"]
+streams_count = 3
+stream_0/stream = ExtResource("7_q4kqk")
+stream_1/stream = ExtResource("8_injid")
+stream_2/stream = ExtResource("9_r6v2m")
 
 [node name="Unit" type="Node2D"]
 z_index = 1
@@ -46,3 +56,11 @@ shape = SubResource("RectangleShape2D_glnlk")
 position = Vector2(-11, -20)
 unit = NodePath("..")
 health = NodePath("../Health")
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="UnitHitSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = SubResource("AudioStreamRandomizer_55h4j")
+
+[node name="UnitDeadSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("9_q4kqk")

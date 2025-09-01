@@ -9,7 +9,7 @@ var move_speed: float = 100
 func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->void:
 	super.start_action(target_gird_position,on_action_finished)
 	
-	path = GridManager.get_nav_world_path(unit.grid_position,target_gird_position)
+	path = GridManager.get_nav_world_path(unit,unit.grid_position,target_gird_position)
 	
 	GridManager.set_grid_occupied(unit.grid_position,null)
 	GridManager.set_grid_walkable(unit.grid_position,true)
@@ -52,7 +52,7 @@ func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i
 			var potential_grid : Vector2i = unit_grid + Vector2i(i,j)#目标格子
 			#if GridManager.is_grid_occupied(potential_grid):
 				#continue
-			var gird_path = GridManager.get_nav_grid_path(unit_grid,potential_grid)
+			var gird_path = GridManager.get_nav_grid_path(unit,unit_grid,potential_grid)
 			var length = GridManager.get_grid_path_length(gird_path)
 			if length <= max_length and length > 0 and GridManager.is_grid_walkable(potential_grid):#路线长度于等于最大长度（移动力），且大于0（不是原地），且被标记为可移动的网格
 				results.append(potential_grid)

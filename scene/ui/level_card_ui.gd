@@ -11,6 +11,7 @@ var level_resource:LevelResource
 
 
 func _ready() -> void:
+	AudioManager.register_button(self)
 	pressed.connect(on_button_pressed)
 
 

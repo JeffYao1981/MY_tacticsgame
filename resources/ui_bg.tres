@@ -1,0 +1,11 @@
+[gd_resource type="StyleBoxTexture" load_steps=2 format=3 uid="uid://bahtlhgrfetv6"]
+
+[ext_resource type="Texture2D" uid="uid://chyhb1xlofm1n" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Banner_Vertical.png" id="1_s15h4"]
+
+[resource]
+texture = ExtResource("1_s15h4")
+texture_margin_left = 18.0
+texture_margin_top = 62.0
+texture_margin_right = 16.0
+texture_margin_bottom = 22.0
+region_rect = Rect2(35, 1, 121, 159)

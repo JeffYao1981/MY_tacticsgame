@@ -7,6 +7,7 @@ class_name BaseAction
 @export var grid_color:Color = Color.WHITE
 @export var action_point_cost:int = 1
 @export var range_show:AnimatedSprite2D
+@export var action_icon:Texture2D
 
 
 

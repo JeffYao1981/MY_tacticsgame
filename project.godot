@@ -22,6 +22,8 @@ PlayerActionManager="*res://scene/autoloads/player_action_manager.tscn"
 GameManager="*res://scene/autoloads/game_manager.tscn"
 TurnManager="*res://scene/autoloads/turn_manager.tscn"
 EnemyActionManage="*res://scene/autoloads/enemy_action_manage.tscn"
+SaveManager="*res://scene/autoloads/save_manager.tscn"
+AudioManager="*res://scene/autoloads/audio_manager.tscn"
 
 [display]
 
@@ -77,6 +79,7 @@ debug_key={
 [rendering]
 
 textures/canvas_textures/default_texture_filter=0
+textures/vram_compression/import_etc2_astc=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
 textures/size/window_height_override=0

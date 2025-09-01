@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://ccfjxf6hsdeic"]
+[gd_scene load_steps=31 format=3 uid="uid://ccfjxf6hsdeic"]
 
 [ext_resource type="Script" uid="uid://b1vn82nq25fdx" path="res://scene/units/unit.gd" id="1_6he8p"]
 [ext_resource type="Texture2D" uid="uid://jik1jj0sac1w" path="res://assets/Tiny Swords (Update 010)/Factions（阵营）/Knights/Troops/Warrior/Blue/Warrior_Blue_3.png" id="2_7myrj"]
@@ -8,6 +8,10 @@
 [ext_resource type="Script" uid="uid://c2eowegq0kbk2" path="res://scene/units/unit_area.gd" id="7_pkr8u"]
 [ext_resource type="PackedScene" uid="uid://c5ps30aynrhs6" path="res://scene/units/health.tscn" id="8_jrbfq"]
 [ext_resource type="PackedScene" uid="uid://bcja1yjuhgidg" path="res://scene/ui/unit_word_ui.tscn" id="9_3cgq0"]
+[ext_resource type="AudioStream" uid="uid://d17gwb0hokcqd" path="res://assets/sounds/SFX_Hit_1.wav" id="9_k8rde"]
+[ext_resource type="AudioStream" uid="uid://dim7pgohv2txi" path="res://assets/sounds/SFX_Hit_2.wav" id="10_t43us"]
+[ext_resource type="AudioStream" uid="uid://dsk4ynh04d5xu" path="res://assets/sounds/SFX_Hit_3.wav" id="11_qnhnx"]
+[ext_resource type="AudioStream" uid="uid://du1183vga1uma" path="res://assets/sounds/SFX_Death.wav" id="12_pkr8u"]
 
 [sub_resource type="Animation" id="Animation_yfcxa"]
 length = 0.001
@@ -524,6 +528,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jrbfq"]
+streams_count = 3
+stream_0/stream = ExtResource("9_k8rde")
+stream_1/stream = ExtResource("10_t43us")
+stream_2/stream = ExtResource("11_qnhnx")
+
 [node name="TinySwordWarriorUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_6he8p")
@@ -570,3 +580,11 @@ modulate = Color(1, 1, 1, 0.478431)
 scale = Vector2(1.33333, 1.33333)
 sprite_frames = SubResource("SpriteFrames_qnhnx")
 autoplay = "default"
+
+[node name="Sound" type="Node" parent="."]
+
+[node name="UnitHitSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = SubResource("AudioStreamRandomizer_jrbfq")
+
+[node name="UnitDeadSoundPlayer" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("12_pkr8u")

@@ -1,8 +1,14 @@
-[gd_scene load_steps=12 format=3 uid="uid://b67r7hqfxcqul"]
+[gd_scene load_steps=15 format=3 uid="uid://b67r7hqfxcqul"]
 
 [ext_resource type="Script" uid="uid://do78dcr355fkx" path="res://scene/actions/fireball_action.gd" id="1_eoakr"]
 [ext_resource type="PackedScene" uid="uid://crwo2y2ot6jp0" path="res://scene/weapons/fireball.tscn" id="2_de53q"]
 [ext_resource type="Texture2D" uid="uid://nudafu8lfuq8" path="res://assets/effect/SPS_Explosion.png" id="3_0mwgw"]
+[ext_resource type="Texture2D" uid="uid://dflct6xba6lou" path="res://assets/ui/32x32.png" id="3_4n4a1"]
+[ext_resource type="AudioStream" uid="uid://c2ra4d4rx1vvh" path="res://assets/sounds/SFX_Fireball.wav" id="5_38e87"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6awa1"]
+atlas = ExtResource("3_4n4a1")
+region = Rect2(256, 1984, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_4n4a1"]
 atlas = ExtResource("3_0mwgw")
@@ -68,9 +74,13 @@ action_id = "fireball_action"
 action_name = "Fireball"
 grid_color = Color(0.35026, 0.00103038, 0.860838, 1)
 range_show = NodePath("Sprite2D")
+action_icon = SubResource("AtlasTexture_6awa1")
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_6awa1")
 autoplay = "default"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_38e87")

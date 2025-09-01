@@ -1,0 +1,58 @@
+[gd_resource type="Theme" load_steps=11 format=3 uid="uid://b0gqc6ia53pnm"]
+
+[ext_resource type="FontFile" uid="uid://cmpxv0lxgbtto" path="res://assets/fonts/Rockboxcond12.ttf" id="1_ufndy"]
+[ext_resource type="Texture2D" uid="uid://cbvk3afixooqq" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Hover_9Slides-0.5.png" id="2_ufndy"]
+[ext_resource type="Texture2D" uid="uid://i6m3sx21q801" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_9Slides-0.5.png" id="3_ybqih"]
+[ext_resource type="Texture2D" uid="uid://b3tvcu0jvvb25" path="res://assets/Tiny Swords (Update 010)/UI/Buttons/Button_Blue_9Slides_Pressed-0.5.png" id="4_wp64m"]
+[ext_resource type="Texture2D" uid="uid://dihwn688nfqrc" path="res://assets/Tiny Swords (Update 010)/UI/Banners/Carved_9Slides.png" id="5_r625f"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wp64m"]
+texture = ExtResource("2_ufndy")
+texture_margin_left = 9.0
+texture_margin_top = 9.0
+texture_margin_right = 8.0
+texture_margin_bottom = 11.0
+region_rect = Rect2(4, 1, 88, 91)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nvthg"]
+texture = ExtResource("2_ufndy")
+texture_margin_left = 5.0
+texture_margin_top = 6.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(4, 0, 90, 93)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_w0yef"]
+texture = ExtResource("3_ybqih")
+texture_margin_left = 6.0
+texture_margin_top = 9.0
+texture_margin_right = 7.0
+texture_margin_bottom = 10.0
+region_rect = Rect2(4, 0, 89, 92)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_eehny"]
+texture = ExtResource("4_wp64m")
+texture_margin_left = 5.0
+texture_margin_top = 5.0
+texture_margin_right = 4.0
+texture_margin_bottom = 8.0
+region_rect = Rect2(3, 3, 89, 90)
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_yjimd"]
+texture = ExtResource("5_r625f")
+texture_margin_left = 4.0
+texture_margin_top = 7.0
+texture_margin_right = 5.0
+texture_margin_bottom = 6.0
+region_rect = Rect2(2, 1, 189, 190)
+
+[resource]
+Button/font_sizes/font_size = 15
+Button/fonts/font = ExtResource("1_ufndy")
+Button/styles/focus = SubResource("StyleBoxTexture_wp64m")
+Button/styles/hover = SubResource("StyleBoxTexture_nvthg")
+Button/styles/normal = SubResource("StyleBoxTexture_w0yef")
+Button/styles/pressed = SubResource("StyleBoxTexture_eehny")
+Label/font_sizes/font_size = 11
+Label/fonts/font = ExtResource("1_ufndy")
+PanelContainer/styles/panel = SubResource("StyleBoxTexture_yjimd")

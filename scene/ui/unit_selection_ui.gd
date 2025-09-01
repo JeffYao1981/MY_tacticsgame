@@ -13,6 +13,8 @@ extends PanelContainer
 
 
 func _ready() -> void:
+	AudioManager.register_button(start_button)
+	AudioManager.register_button(back_button)
 	start_button.pressed.connect(on_start_button_pressed)#链接start_button按钮按下信号
 	back_button.pressed.connect(on_back_button_pressed)#链接back_button按钮按下信号
 	for unit_resource in unit_resources:#遍历手动指定的单位资源对象

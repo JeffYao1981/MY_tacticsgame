@@ -12,6 +12,6 @@ region = Rect2(11.7028, 135.218, 39.8289, 39.8289)
 script = ExtResource("1_4omcs")
 unit_icon = SubResource("AtlasTexture_citr5")
 unit_name = "warrior_tiny"
-unit_description = "小剑中的角色，有四方向"
+unit_description = "小剑中的角色，有四方向，近战攻击，防御力高13我2321321321313213213213213213213213213213恶趣味挖的撒发热无法撒旦发我"
 unit_scene = ExtResource("3_citr5")
 metadata/_custom_type_script = "uid://dpquwsx8q5sek"

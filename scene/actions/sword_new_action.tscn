@@ -30,6 +30,7 @@ action_id = "Sword_new_action"
 action_name = "Slash"
 grid_color = Color(0.88742, 1.13589e-05, 0.590249, 1)
 range_show = NodePath("Sprite2D")
+action_icon = ExtResource("3_y03l0")
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
