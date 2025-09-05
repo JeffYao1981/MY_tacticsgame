@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dh80l6lavwd7n"]
+
+[ext_resource type="Theme" uid="uid://b0gqc6ia53pnm" path="res://resources/ui_theme.tres" id="1_1ekrb"]
+[ext_resource type="Script" uid="uid://cx2op28btrack" path="res://scene/ui/unit_actions_ui.gd" id="2_1m12u"]
+[ext_resource type="PackedScene" uid="uid://d3kxmkv86rhke" path="res://scene/ui/action_card_ui.tscn" id="3_sqxg7"]
+
+[node name="UnitActionsUI" type="MarginContainer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -16.0
+offset_top = -67.0
+offset_right = 16.0
+offset_bottom = -17.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(-102, 13)
+theme = ExtResource("1_1ekrb")
+theme_override_constants/margin_bottom = 16
+script = ExtResource("2_1m12u")
+action_card_ui_scene = ExtResource("3_sqxg7")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="ActionContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 8
+alignment = 1

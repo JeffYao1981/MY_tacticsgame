@@ -107,15 +107,23 @@ func visualize_grids(grids:Array[Vector2i],color:Color = Color.WHITE) -> void:
 
 
 func apply_dynamic_blockers(unit:Unit):
+	
+	
 	for other in GameManager.all_units:
 		if other == unit:
 			continue
+		if not is_instance_valid(other):
+			continue
+		if not (other is Unit):
+			continue
+		
 		if not can_pass_through(unit, other):
 			nav_layer.a_star.set_point_solid(other.grid_position, true)
 
 func clear_dynamic_blockers():
 	for other in GameManager.all_units:
-		nav_layer.a_star.set_point_solid(other.grid_position, false)
+		if other:
+			nav_layer.a_star.set_point_solid(other.grid_position, false)
 
 
 func can_pass_through(unit:Unit, other:Unit) -> bool:

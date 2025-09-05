@@ -1,10 +1,13 @@
-[gd_scene load_steps=7 format=3 uid="uid://rdr6rx1l6l1r"]
+[gd_scene load_steps=11 format=3 uid="uid://rdr6rx1l6l1r"]
 
 [ext_resource type="Script" uid="uid://bwha0vgwxkcou" path="res://scene/actions/sword_new_action.gd" id="1_yrmyg"]
 [ext_resource type="PackedScene" uid="uid://b2y3n2658lmac" path="res://scene/actions/sword_slash.tscn" id="2_qjwbg"]
 [ext_resource type="Texture2D" uid="uid://bqhc077inwv12" path="res://assets/ui/icon/S_Sword01.png" id="3_y03l0"]
 [ext_resource type="Texture2D" uid="uid://dx8vpwvkomv0v" path="res://assets/ui/icon/S_Sword02.png" id="4_yuqeu"]
 [ext_resource type="Texture2D" uid="uid://cwujc6yq7me80" path="res://assets/ui/icon/S_Sword03.png" id="5_gwtpe"]
+[ext_resource type="AudioStream" uid="uid://p7bqrmkvwvg7" path="res://assets/sounds/SFX_Sword_1.wav" id="6_7le0u"]
+[ext_resource type="AudioStream" uid="uid://bhhjgja8glto5" path="res://assets/sounds/SFX_Sword_2.wav" id="7_cdbuu"]
+[ext_resource type="AudioStream" uid="uid://brww36r1r5yls" path="res://assets/sounds/SFX_Sword_3.wav" id="8_rb0ao"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_7le0u"]
 animations = [{
@@ -23,6 +26,12 @@ animations = [{
 "speed": 5.0
 }]
 
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_4010m"]
+streams_count = 3
+stream_0/stream = ExtResource("6_7le0u")
+stream_1/stream = ExtResource("7_cdbuu")
+stream_2/stream = ExtResource("8_rb0ao")
+
 [node name="Sword_new_action" type="Node" node_paths=PackedStringArray("range_show")]
 script = ExtResource("1_yrmyg")
 slash_effect = ExtResource("2_qjwbg")
@@ -39,3 +48,6 @@ sprite_frames = SubResource("SpriteFrames_7le0u")
 autoplay = "default"
 frame = 2
 frame_progress = 0.941661
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_4010m")

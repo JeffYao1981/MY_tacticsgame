@@ -9,7 +9,7 @@ var selected_unit: Unit
 var mouse_grid_position:Vector2i
 var range_box_switch:bool = false
 @onready var sprite_2d: Sprite2D = $Sprite2D
-var range_show:AnimatedSprite2D
+
 #var range_box_show:AnimatedSprite2D
 
 func set_selected_unit(unit:Unit) ->void:
@@ -17,10 +17,15 @@ func set_selected_unit(unit:Unit) ->void:
 		return
 	if selected_unit == unit or unit.is_enemy:
 		return
-	
+	#if selected_unit:#这里判断UI的隐藏和显示
+		#selected_unit.unit_actions_ui.visible = false
+		#var action_card = selected_unit.unit_actions_ui.action_container
+		#for card_ui in action_card.get_children():
+			#card_ui.animation_player.play("button_in")
+			#print("UI来了")
 	selected_unit = unit
 	
-	#range_box_show = selected_action.range_show
+	
 	print(unit.name + "selected")
 	unit_selected.emit(selected_unit)
 	set_selected_action(unit.actions_manager.get_action("move_action"))#选择角色后默认选择的action
@@ -31,7 +36,8 @@ func set_selected_action(action:BaseAction) ->void:
 		return
 	if selected_action == action:
 		return
-		
+	if selected_action:
+		selected_action.range_show.visible = false
 	selected_action = action
 	selected_action.set_range_icon()
 	if selected_unit.current_action_points >= selected_action.action_point_cost:
@@ -118,9 +124,35 @@ func  try_perform_selected_action()-> void:
 	is_performing_action = true
 	range_box_switch = false
 	selected_action.range_show.visible = false
-	#selected_action.range_show.visible = false
+	
 	selected_action.start_action(target_grid_position,on_action_finished)
 
-
+func try_cancel_selected_action() -> bool:#回滚操作
+	if selected_unit == null:
+		show_message("没有选中的角色")
+		return false
+	if selected_action == null:
+		show_message("没有选中的动作")
+		return false
+	if not selected_action.can_cancel:
+		print("can_cancel:",selected_action.can_cancel)
+		show_message("该动作不可撤销")
+		return false
+	if selected_action.move_history.is_empty():
+		show_message("没有更多移动可以撤销")
+		return false
+	var last_state = selected_action.move_history.back()
+	if last_state:
+		if GridManager.is_grid_occupied(last_state.grid_pos):
+			show_message("目标格子被其他角色占用，无法撤销")
+			return false
+	selected_action.cancel_action()
+	return true
+	
+	
+func show_message(msg: String):
+	print(msg)
+	
 func on_action_finished() ->void:
 	is_performing_action = false
+	

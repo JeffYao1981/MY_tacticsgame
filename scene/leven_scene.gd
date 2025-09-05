@@ -25,6 +25,6 @@ func _ready() -> void:
 	state_machine.launch_state_machine()
 
 
-func _input(event):
-	if event.is_action_pressed("debug_key"):  # 设置一个调试按键
-		GridManager.debug_specific_case()
+#func _input(event):
+	#if event.is_action_pressed("debug_key"):  # 设置一个调试按键
+		#GridManager.debug_specific_case()

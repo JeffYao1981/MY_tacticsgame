@@ -31,6 +31,8 @@ func _unhandled_input(event: InputEvent) -> void:
 	
 	if event.is_action_pressed("left_mouse_click"):
 		PlayerActionManager.try_perform_selected_action()
+	if event.is_action_pressed("right_mouse_click"):
+		PlayerActionManager.try_cancel_selected_action()
 
 
 func on_enemy_turn_started() ->void:

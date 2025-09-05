@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://nrsx7ey1xhyq"]
+[gd_scene load_steps=20 format=4 uid="uid://nrsx7ey1xhyq"]
 
 [ext_resource type="Script" uid="uid://cvs5118wst686" path="res://scene/leven_scene.gd" id="1_gbvrf"]
 [ext_resource type="PackedScene" uid="uid://vcq027y1uk84" path="res://scene/ui/game_ui.tscn" id="1_j5dih"]
@@ -11,7 +11,21 @@
 [ext_resource type="PackedScene" uid="uid://c6snfjgnkpi4k" path="res://scene/state_machine/turn_movie.tscn" id="4_tevre"]
 [ext_resource type="TileSet" uid="uid://daolc8ryv5c4k" path="res://resources/alonvisuzlize_tile_set.tres" id="5_8tfcn"]
 [ext_resource type="Script" uid="uid://vi6h0wrcr6f6" path="res://scene/state_machine/enemy_turn_state.gd" id="5_pj1h8"]
+[ext_resource type="Texture2D" uid="uid://cnpji4octa3kj" path="res://CheckerBoard.png" id="7_68ae3"]
+[ext_resource type="Texture2D" uid="uid://bue2wsiwr3pp" path="res://assets/grids/NaviData_32_bw.png" id="7_tevre"]
+[ext_resource type="Script" uid="uid://cwd37fxkr5dp3" path="res://scene/camera_2d.gd" id="9_i36vu"]
+[ext_resource type="PackedScene" uid="uid://dh80l6lavwd7n" path="res://scene/ui/unit_actions_ui.tscn" id="14_68ae3"]
 [ext_resource type="Script" uid="uid://c4xyqoltsc13s" path="res://scene/camera_controller.gd" id="14_me2tt"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4nly"]
+texture = ExtResource("7_tevre")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_wrbae"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_s4nly")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_me2tt"]
 size = Vector2(609, 767)
@@ -21,6 +35,7 @@ script = ExtResource("1_gbvrf")
 player_spawn_positions = [NodePath("PlayerUnit/PlayerSpawnPosition"), NodePath("PlayerUnit/PlayerSpawnPosition2"), NodePath("PlayerUnit/PlayerSpawnPosition3")]
 
 [node name="GameUI" parent="." instance=ExtResource("1_j5dih")]
+visible = false
 
 [node name="Map" type="Node" parent="."]
 
@@ -33,7 +48,13 @@ tile_set = ExtResource("3_owm7n")
 [node name="DoungeonDecoration" type="TileMapLayer" parent="Map"]
 tile_set = ExtResource("3_owm7n")
 
+[node name="CheckerBoard" type="TileMapLayer" parent="Map"]
+modulate = Color(1, 1, 1, 0.356863)
+tile_map_data = PackedByteArray("AAAAAAIAAAAAAAAAAAABAAIAAAABAAAAAAAAAAMAAAABAAAAAAABAAMAAAAAAAAAAAAAAAQAAAAAAAAAAAABAAQAAAABAAAAAAAAAAUAAAABAAAAAAABAAUAAAAAAAAAAAAAAAYAAAAAAAAAAAABAAYAAAABAAAAAAAAAAcAAAABAAAAAAABAAcAAAAAAAAAAAAAAAgAAAAAAAAAAAABAAgAAAABAAAAAAAAAAkAAAABAAAAAAABAAkAAAAAAAAAAAAAAAoAAAAAAAAAAAABAAoAAAABAAAAAAAAAAsAAAABAAAAAAABAAsAAAAAAAAAAAAAAAwAAAAAAAAAAAABAAwAAAABAAAAAAAAAA0AAAABAAAAAAABAA0AAAAAAAAAAAACAAIAAAAAAAAAAAADAAIAAAABAAAAAAACAAMAAAABAAAAAAADAAMAAAAAAAAAAAACAAQAAAAAAAAAAAADAAQAAAABAAAAAAACAAUAAAABAAAAAAADAAUAAAAAAAAAAAACAAYAAAAAAAAAAAADAAYAAAABAAAAAAACAAsAAAABAAAAAAADAAsAAAAAAAAAAAACAAcAAAABAAAAAAADAAcAAAAAAAAAAAACAAgAAAAAAAAAAAADAAgAAAABAAAAAAACAAkAAAABAAAAAAADAAkAAAAAAAAAAAACAAoAAAAAAAAAAAADAAoAAAABAAAAAAACAAwAAAAAAAAAAAADAAwAAAABAAAAAAACAA0AAAABAAAAAAADAA0AAAAAAAAAAAAEAAIAAAAAAAAAAAAFAAIAAAABAAAAAAAEAAMAAAABAAAAAAAFAAMAAAAAAAAAAAAEAAQAAAAAAAAAAAAFAAQAAAABAAAAAAAEAAUAAAABAAAAAAAFAAUAAAAAAAAAAAAEAAYAAAAAAAAAAAAFAAYAAAABAAAAAAAEAAcAAAABAAAAAAAFAAcAAAAAAAAAAAAEAAgAAAAAAAAAAAAFAAgAAAABAAAAAAAEAAkAAAABAAAAAAAFAAkAAAAAAAAAAAAEAAoAAAAAAAAAAAAFAAoAAAABAAAAAAAEAAsAAAABAAAAAAAFAAsAAAAAAAAAAAAEAAwAAAAAAAAAAAAFAAwAAAABAAAAAAAEAA0AAAABAAAAAAAFAA0AAAAAAAAAAAAGAAMAAAABAAAAAAAGAAQAAAAAAAAAAAAGAAUAAAABAAAAAAAGAAYAAAAAAAAAAAAGAAcAAAABAAAAAAAGAAgAAAAAAAAAAAAGAAkAAAABAAAAAAAGAAoAAAAAAAAAAAAGAAsAAAABAAAAAAAGAAwAAAAAAAAAAAAGAA0AAAABAAAAAAAHAAMAAAAAAAAAAAAIAAMAAAABAAAAAAAHAAQAAAABAAAAAAAIAAQAAAAAAAAAAAAHAAUAAAAAAAAAAAAIAAUAAAABAAAAAAAHAAYAAAABAAAAAAAIAAYAAAAAAAAAAAAHAAcAAAAAAAAAAAAIAAcAAAABAAAAAAAHAAgAAAABAAAAAAAIAAgAAAAAAAAAAAAHAAkAAAAAAAAAAAAIAAkAAAABAAAAAAAHAAoAAAABAAAAAAAIAAoAAAAAAAAAAAAHAAsAAAAAAAAAAAAIAAsAAAABAAAAAAAHAAwAAAABAAAAAAAIAAwAAAAAAAAAAAAHAA0AAAAAAAAAAAAIAA0AAAABAAAAAAAJAAMAAAAAAAAAAAAKAAMAAAABAAAAAAAJAAQAAAABAAAAAAAKAAQAAAAAAAAAAAAJAAUAAAAAAAAAAAAKAAUAAAABAAAAAAAJAAYAAAABAAAAAAAKAAYAAAAAAAAAAAAJAAcAAAAAAAAAAAAKAAcAAAABAAAAAAAJAAgAAAABAAAAAAAKAAgAAAAAAAAAAAAJAAkAAAAAAAAAAAAKAAkAAAABAAAAAAAJAAoAAAABAAAAAAAKAAoAAAAAAAAAAAAJAAsAAAAAAAAAAAAKAAsAAAABAAAAAAAJAA0AAAAAAAAAAAAKAA0AAAABAAAAAAAJAAwAAAABAAAAAAAKAAwAAAAAAAAAAAAGAAIAAAAAAAAAAAAHAAIAAAABAAAAAAAIAAIAAAAAAAAAAAAJAAIAAAABAAAAAAAKAAIAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_wrbae")
+
 [node name="NavLayer" type="TileMapLayer" parent="Map"]
+visible = false
 position = Vector2(4, 0)
 tile_set = ExtResource("1_yjwhl")
 script = ExtResource("2_0atw2")
@@ -42,8 +63,49 @@ script = ExtResource("2_0atw2")
 position = Vector2(4, 0)
 tile_set = ExtResource("5_8tfcn")
 
+[node name="Sprite2D" type="Sprite2D" parent="Map"]
+visible = false
+modulate = Color(1, 1, 1, 0.172549)
+position = Vector2(178.294, 256.04)
+scale = Vector2(0.396901, 0.397822)
+texture = ExtResource("7_68ae3")
+
 [node name="GridIndicator" parent="." instance=ExtResource("3_042up")]
-position = Vector2(4, 0)
+position = Vector2(176, 330)
+
+[node name="CameraController" type="Node2D" parent="GridIndicator"]
+visible = false
+position = Vector2(176, 320)
+script = ExtResource("14_me2tt")
+
+[node name="CameraBoundary" type="Area2D" parent="GridIndicator"]
+visible = false
+position = Vector2(176, 320)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="GridIndicator/CameraBoundary"]
+visible = false
+position = Vector2(-4, 0.5)
+shape = SubResource("RectangleShape2D_me2tt")
+disabled = true
+
+[node name="Camera2D" type="Camera2D" parent="GridIndicator"]
+position = Vector2(5, -8)
+limit_left = -125
+limit_top = -95
+limit_right = 485
+limit_bottom = 745
+limit_smoothed = true
+position_smoothing_enabled = true
+position_smoothing_speed = 3.0
+drag_horizontal_enabled = true
+drag_vertical_enabled = true
+drag_left_margin = 0.9
+drag_top_margin = 0.78
+drag_right_margin = 0.9
+drag_bottom_margin = 0.83
+editor_draw_limits = true
+editor_draw_drag_margin = true
+script = ExtResource("9_i36vu")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_pj1h8")]
 starting_state = NodePath("PlayerTurnState")
@@ -73,16 +135,4 @@ position = Vector2(243, 171)
 
 [node name="EnemyUnits" type="Node" parent="."]
 
-[node name="CameraController" type="Node2D" parent="."]
-position = Vector2(180, 320)
-script = ExtResource("14_me2tt")
-
-[node name="Camera2D" type="Camera2D" parent="CameraController"]
-
-[node name="CameraBoundary" type="Area2D" parent="."]
-position = Vector2(180, 320)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CameraBoundary"]
-position = Vector2(-4, 0.5)
-shape = SubResource("RectangleShape2D_me2tt")
-disabled = true
+[node name="UnitActionsUI" parent="." instance=ExtResource("14_68ae3")]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://djg082llpgakc"]
+
+[ext_resource type="PackedScene" uid="uid://dh80l6lavwd7n" path="res://scene/ui/unit_actions_ui.tscn" id="1_bua8u"]
+
+[node name="unit_card_ui" type="CanvasLayer"]
+
+[node name="UnitActionsUI" parent="." instance=ExtResource("1_bua8u")]

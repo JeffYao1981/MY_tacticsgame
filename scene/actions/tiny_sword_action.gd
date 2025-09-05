@@ -4,6 +4,7 @@ class_name TinySwordAction
 
 @export var slash_effect: PackedScene
 var target_position:Vector2i
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> void:
 	target_position = target_grid_position
@@ -23,7 +24,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 		
 		unit.animation_player.play("sword_attack_top_1")
 	
-	
+	audio_stream_player.play()
 	
 	
 	

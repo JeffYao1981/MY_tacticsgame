@@ -9,12 +9,14 @@ class_name BaseAction
 @export var range_show:AnimatedSprite2D
 @export var action_icon:Texture2D
 
-
+signal clear_action_card
+signal add_action_card
 
 var unit: Unit
 var is_active: bool = false #是否正在执行
 var on_action_finished: Callable
-
+var can_cancel:bool = false
+var move_history := []
 
 func _ready() -> void:
 	unit = owner
@@ -41,9 +43,36 @@ func set_range_icon() -> void:
 	
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) ->void:
 	is_active = true
+	can_cancel = true
+	move_history.append({
+		"grid_pos": unit.grid_position,
+		"global_pos": unit.global_position,
+		"action_point_cost": action_point_cost,
+		"action_performed": false  # 攻击或不可撤销动作时设置 true
+	})
 	self.on_action_finished = on_action_finished
 	unit.current_action_points -= action_point_cost
 	GridManager.visual_layer.clear()
+	clear_action_card.emit()
+	
+func cancel_action()->void:
+	if !can_cancel:
+		return
+	if move_history.is_empty():
+		return
+	GridManager.set_grid_walkable(unit.grid_position,true)
+	GridManager.set_grid_occupied(unit.grid_position,null)
+	GridManager.nav_layer.a_star.set_point_solid(unit.grid_position,false)
+	clear_action_card.emit()
+	var last_state = move_history.pop_back()
+	unit.grid_position = last_state.grid_pos
+	unit.global_position = last_state.global_pos
+	unit.current_action_points += action_point_cost
+	
+	GridManager.set_grid_walkable(last_state.grid_pos,false)
+	GridManager.set_grid_occupied(last_state.grid_pos,unit)
+	GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
+	add_action_card.emit()
 	
 	
 func finish_action() ->void:
@@ -52,7 +81,9 @@ func finish_action() ->void:
 	if unit.current_action_points >= action_point_cost :
 		GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
 		PlayerActionManager.range_box_switch = true
+		add_action_card.emit()
 	#elif :
+	
 		
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	return []

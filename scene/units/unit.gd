@@ -3,6 +3,7 @@ class_name Unit
 
 signal unit_died(unit:Unit)
 signal action_point_changed(action_point: int)
+@onready var unit_actions_ui: UnitActionsUI = $UnitActionsUI
 
 @onready var unit_area: Area2D = $UnitArea
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
@@ -28,11 +29,7 @@ enum UnitType {
 	FLYING,     # 飞行单位
 	PHASE,      # 穿透单位
 }
-
 @export var unit_type: UnitType = UnitType.INFANTRY
-
-
-
 
 
 var current_action_points:int:
@@ -55,6 +52,7 @@ func _ready() -> void:
 		
 func on_unit_selected() ->void:
 	PlayerActionManager.set_selected_unit(self)
+	
 	
 func take_damage(damage_amount:int) -> void:
 	print(name + "受到了"+ str(damage_amount)+"点伤害")

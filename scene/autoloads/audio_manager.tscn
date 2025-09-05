@@ -12,4 +12,3 @@ stream = ExtResource("2_h56mk")
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_3sc35")
-autoplay = true

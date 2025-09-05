@@ -18,6 +18,10 @@ func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->v
 	GridManager.set_grid_walkable(target_gird_position,false)
 		
 	unit.animation_player.play("run")
+
+func cancel_action()->void:
+	super.cancel_action()
+	unit.animation_player.play("idle")
 	
 func move(target_global_position:Vector2,delta: float) -> void:
 	if unit.global_position.x > target_global_position.x:

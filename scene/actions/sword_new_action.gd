@@ -4,6 +4,7 @@ class_name Sword_new_action
 
 @export var slash_effect: PackedScene
 var target_position:Vector2i
+@onready var audio_stream_player: AudioStreamPlayer = $AudioStreamPlayer
 
 func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> void:
 	target_position = target_grid_position
@@ -23,7 +24,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	elif target_position.y > unit.grid_position.y:
 		unit.animation_player.play("sword_attack_button_1")
 	
-	
+	audio_stream_player.play()
 	
 	
 func attack_animation_contor() -> void:

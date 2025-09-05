@@ -8,6 +8,7 @@ var move_speed: float = 100
 func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->void:
 	super.start_action(target_gird_position,on_action_finished)
 	
+		
 	path = GridManager.get_nav_world_path(unit,unit.grid_position,target_gird_position)
 	
 	GridManager.set_grid_walkable(unit.grid_position,true)
@@ -20,6 +21,7 @@ func start_action(target_gird_position:Vector2i,on_action_finished:Callable) ->v
 		GridManager.nav_layer.a_star.set_point_solid(target_gird_position)
 		
 	unit.animated_sprite_2d.play("run")
+	
 	
 func move(target_global_position:Vector2,delta: float) -> void:
 	if unit.global_position.x > target_global_position.x:
@@ -59,9 +61,9 @@ func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i
 	return results
 	
 	
-	
-	
-	
+func cancel_action()->void:
+	super.cancel_action()
+	unit.animated_sprite_2d.play("idle")
 	
 	
 	

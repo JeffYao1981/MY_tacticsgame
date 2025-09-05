@@ -3,7 +3,7 @@ class_name StateMachine
 
 
 
-@export var starting_state:BaseState
+@export var starting_state:BaseState #从谁的回合开始
 
 var states: Array[BaseState]
 var current_state:BaseState
