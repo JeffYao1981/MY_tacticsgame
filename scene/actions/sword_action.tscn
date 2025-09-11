@@ -22,7 +22,7 @@ animations = [{
 "texture": ExtResource("5_ndgpm")
 }],
 "loop": true,
-"name": &"default",
+"name": &"run",
 "speed": 5.0
 }]
 
@@ -45,7 +45,8 @@ metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]
 visible = false
 sprite_frames = SubResource("SpriteFrames_3w65l")
-autoplay = "default"
+animation = &"run"
+autoplay = "run"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = SubResource("AudioStreamRandomizer_s2tfo")

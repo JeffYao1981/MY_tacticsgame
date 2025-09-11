@@ -96,3 +96,7 @@ func get_action_grids(unit_grid: Vector2i = unit.grid_position) -> Array[Vector2
 			queue.append([next_pos, current_distance + 1])
 	
 	return results
+
+
+#func predict_damage(target: Unit) -> int:
+	#return fireball_scene.damage_amount# 子类覆盖	

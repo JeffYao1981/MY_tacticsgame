@@ -9,27 +9,41 @@ var maximum_unit_count:int = 3
 
 var player_units:Array[Unit]
 var enemy_units:Array[Unit]
+var chess_piece_red:Array[Unit]
+var chess_piece_black:Array[Unit]
 var all_units:Array[Unit]
 
 
 
 func register_unit(unit:Unit) -> void:
-	if unit.is_enemy:
-		enemy_units.append(unit)
-	else:
-		player_units.append(unit)
+	if unit.is_chess_piece:
+		if unit.is_enemy :
+			chess_piece_black.append(unit)
+		else :
+			chess_piece_red.append(unit)
+	else :
+		if unit.is_enemy:
+			enemy_units.append(unit)
+		else :
+			player_units.append(unit)
+				
 	unit.unit_died.connect(on_unit_died)
 	all_units.append(unit)
 	
 
 func unregister_unit(unit:Unit) ->void:
-	if unit.is_enemy:
-		enemy_units.erase(unit)
-		
+	if unit.is_chess_piece:
+		if unit.is_enemy :
+			chess_piece_black.erase(unit)
+		else :
+			chess_piece_red.erase(unit)
 	else:
-		player_units.erase(unit)
-		if PlayerActionManager.selected_unit == unit and not player_units.is_empty():
-			PlayerActionManager.set_selected_unit(player_units[0])
+		if unit.is_enemy:
+			enemy_units.erase(unit)
+		else:
+			player_units.erase(unit)
+			if PlayerActionManager.selected_unit == unit and not player_units.is_empty():
+				PlayerActionManager.set_selected_unit(player_units[0])
 	all_units.erase(unit)
 	
 	

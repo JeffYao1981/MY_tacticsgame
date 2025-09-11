@@ -18,7 +18,8 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) -> 
 	
 	audio_stream_player.play()
 	
-	
+#func predict_damage(target: Unit) -> int:
+	#return sword_scene.damager_amount# 子类覆盖	
 
 #func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	#var results: Array[Vector2i] = []
@@ -94,3 +95,9 @@ func get_action_grids(unit_grid: Vector2i = unit.grid_position) -> Array[Vector2
 			
 	
 	return results
+
+
+
+#子类（比如 SwordAction.gd、BowAction.gd）实现自己的预测逻辑：
+#func predict_damage(target: Unit) -> int:
+	#return unit.stats.attack - target.stats.defense

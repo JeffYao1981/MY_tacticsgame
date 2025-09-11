@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=4 uid="uid://nrsx7ey1xhyq"]
+[gd_scene load_steps=23 format=4 uid="uid://nrsx7ey1xhyq"]
 
 [ext_resource type="Script" uid="uid://cvs5118wst686" path="res://scene/leven_scene.gd" id="1_gbvrf"]
 [ext_resource type="PackedScene" uid="uid://vcq027y1uk84" path="res://scene/ui/game_ui.tscn" id="1_j5dih"]
@@ -10,12 +10,15 @@
 [ext_resource type="Script" uid="uid://nxtt1vjiytn5" path="res://scene/state_machine/player_turn_state.gd" id="4_owm7n"]
 [ext_resource type="PackedScene" uid="uid://c6snfjgnkpi4k" path="res://scene/state_machine/turn_movie.tscn" id="4_tevre"]
 [ext_resource type="TileSet" uid="uid://daolc8ryv5c4k" path="res://resources/alonvisuzlize_tile_set.tres" id="5_8tfcn"]
-[ext_resource type="Script" uid="uid://vi6h0wrcr6f6" path="res://scene/state_machine/enemy_turn_state.gd" id="5_pj1h8"]
 [ext_resource type="Texture2D" uid="uid://cnpji4octa3kj" path="res://CheckerBoard.png" id="7_68ae3"]
 [ext_resource type="Texture2D" uid="uid://bue2wsiwr3pp" path="res://assets/grids/NaviData_32_bw.png" id="7_tevre"]
 [ext_resource type="Script" uid="uid://cwd37fxkr5dp3" path="res://scene/camera_2d.gd" id="9_i36vu"]
+[ext_resource type="Script" uid="uid://2ikg2lqxe1wf" path="res://scene/state_machine/enemy_intent_state.gd" id="13_s4nly"]
 [ext_resource type="PackedScene" uid="uid://dh80l6lavwd7n" path="res://scene/ui/unit_actions_ui.tscn" id="14_68ae3"]
 [ext_resource type="Script" uid="uid://c4xyqoltsc13s" path="res://scene/camera_controller.gd" id="14_me2tt"]
+[ext_resource type="Script" uid="uid://d6fa5wlk662v" path="res://scene/state_machine/enemy_execute_state.gd" id="16_jhbj7"]
+[ext_resource type="Script" uid="uid://cyfmcie1wt1xj" path="res://scene/state_machine/red_turn_state.gd" id="18_jhbj7"]
+[ext_resource type="Script" uid="uid://b8u0psqoef00p" path="res://scene/state_machine/black_turn_state.gd" id="19_4smhr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_s4nly"]
 texture = ExtResource("7_tevre")
@@ -108,7 +111,13 @@ editor_draw_drag_margin = true
 script = ExtResource("9_i36vu")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("starting_state") instance=ExtResource("3_pj1h8")]
-starting_state = NodePath("PlayerTurnState")
+starting_state = NodePath("EnemyIntentState")
+
+[node name="EnemyIntentState" type="Node" parent="StateMachine"]
+script = ExtResource("13_s4nly")
+turn_movie = ExtResource("4_tevre")
+state_name = "EnemyIntentState"
+metadata/_custom_type_script = "uid://il30txxhhkeo"
 
 [node name="PlayerTurnState" type="Node" parent="StateMachine"]
 script = ExtResource("4_owm7n")
@@ -116,10 +125,21 @@ turn_movie = ExtResource("4_tevre")
 state_name = "PlayerTurnState"
 metadata/_custom_type_script = "uid://il30txxhhkeo"
 
-[node name="EnemyTurnState" type="Node" parent="StateMachine"]
-script = ExtResource("5_pj1h8")
+[node name="EnemyExecuteState" type="Node" parent="StateMachine"]
+script = ExtResource("16_jhbj7")
+state_name = "EnemyExecuteState"
+metadata/_custom_type_script = "uid://il30txxhhkeo"
+
+[node name="RedTurnState" type="Node" parent="StateMachine"]
+script = ExtResource("18_jhbj7")
 turn_movie = ExtResource("4_tevre")
-state_name = "EnemyTurnState"
+state_name = "RedTurnState"
+metadata/_custom_type_script = "uid://il30txxhhkeo"
+
+[node name="BlackTurnState" type="Node" parent="StateMachine"]
+script = ExtResource("19_4smhr")
+turn_movie = ExtResource("4_tevre")
+state_name = "BlackTurnState"
 metadata/_custom_type_script = "uid://il30txxhhkeo"
 
 [node name="PlayerUnit" type="Node" parent="."]
@@ -134,5 +154,9 @@ position = Vector2(112, 176)
 position = Vector2(243, 171)
 
 [node name="EnemyUnits" type="Node" parent="."]
+
+[node name="RedChessUnits" type="Node" parent="."]
+
+[node name="BlackChessUnits" type="Node" parent="."]
 
 [node name="UnitActionsUI" parent="." instance=ExtResource("14_68ae3")]

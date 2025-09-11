@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bhekswvojg3qb"]
+[gd_scene load_steps=6 format=3 uid="uid://bhekswvojg3qb"]
 
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_iqfsl"]
 [ext_resource type="SpriteFrames" uid="uid://fr2tvxtxrt05" path="res://resources/animations/enemy_animations/enemy_wizard_animation.tres" id="2_61ajc"]
 [ext_resource type="PackedScene" uid="uid://b67r7hqfxcqul" path="res://scene/actions/fireball_action.tscn" id="2_186dk"]
-[ext_resource type="Script" uid="uid://budkqaormsy3o" path="res://scene/units/enemy_units/wizard_advanced_enemy_ai.gd" id="4_xa5id"]
 [ext_resource type="Script" uid="uid://bay2dhol3ew77" path="res://scene/units/enemy_units/wizard_enemy_ai.gd" id="5_84fgc"]
 [ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="6_7r6du"]
 
@@ -14,16 +13,11 @@ is_enemy = true
 position = Vector2(0, -6)
 sprite_frames = ExtResource("2_61ajc")
 
-[node name="AdvancedEnemyAI" type="Node" parent="." index="2" node_paths=PackedStringArray("unit")]
-script = ExtResource("4_xa5id")
-unit = NodePath("..")
-metadata/_custom_type_script = "uid://cjf16hdrgrafl"
-
-[node name="EnemyAI" type="Node" parent="." index="3" node_paths=PackedStringArray("unit")]
-script = ExtResource("5_84fgc")
-unit = NodePath("..")
-metadata/_custom_type_script = "uid://dvo00rplx2nh8"
-
 [node name="FireballAction" parent="ActionsManager" index="0" instance=ExtResource("2_186dk")]
 
 [node name="MoveAction" parent="ActionsManager" index="1" instance=ExtResource("6_7r6du")]
+
+[node name="EnemyAI" type="Node" parent="." index="7" node_paths=PackedStringArray("unit")]
+script = ExtResource("5_84fgc")
+unit = NodePath("..")
+metadata/_custom_type_script = "uid://dvo00rplx2nh8"

@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://cl8j5s3eevxri"]
+
+[ext_resource type="Script" uid="uid://duoigoygupyk7" path="res://scene/actions/chess_move_action.gd" id="1_q82o1"]
+
+[node name="ChessMoveAction" type="Node"]
+script = ExtResource("1_q82o1")
+action_id = "chess_move_action"
+action_name = "ChessMoveAction"
+grid_color = Color(0.662896, 0.173275, 0.196926, 1)
+metadata/_custom_type_script = "uid://cnb3hk8cwpymp"

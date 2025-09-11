@@ -1,0 +1,83 @@
+[gd_resource type="SpriteFrames" load_steps=12 format=3 uid="uid://d2vvcat3ye5st"]
+
+[ext_resource type="Texture2D" uid="uid://don2qlmj6j8tp" path="res://assets/chess_characters/Chees_Cannon/2-Attack/half-Sheet.png" id="1_4yyus"]
+[ext_resource type="Texture2D" uid="uid://dkcvdqwpl78m6" path="res://assets/chess_characters/Chees_Cannon/1-Idle/half.png" id="2_bhjsg"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ucjat"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(0, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j8qex"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(31, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_n57tq"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(62, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iygq7"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(93, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5yr6x"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(124, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rvqo6"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(155, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_secvd"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(186, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_504ej"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(217, 0, 31, 23)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ink6"]
+atlas = ExtResource("1_4yyus")
+region = Rect2(248, 0, 31, 23)
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ucjat")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j8qex")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n57tq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iygq7")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5yr6x")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rvqo6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_secvd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_504ej")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2ink6")
+}],
+"loop": false,
+"name": &"attack",
+"speed": 10.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_bhjsg")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

@@ -24,6 +24,8 @@ TurnManager="*res://scene/autoloads/turn_manager.tscn"
 EnemyActionManage="*res://scene/autoloads/enemy_action_manage.tscn"
 SaveManager="*res://scene/autoloads/save_manager.tscn"
 AudioManager="*res://scene/autoloads/audio_manager.tscn"
+ChessAiManager="*res://scene/autoloads/chess_ai_manager.gd"
+EnemyIntentVisualizer="*res://scene/autoloads/EnemyIntentVisualizer.gd"
 
 [display]
 

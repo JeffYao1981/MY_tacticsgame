@@ -60,7 +60,7 @@ func set_up(finish_action: Callable, unit: Unit, target_grid_position: Vector2i)
 	self.unit = unit
 	self.target_grid_position = target_grid_position
 	target_world_position = GridManager.get_world_position(target_grid_position)
-	
+	PlayerActionManager.selected_action.damage_amount = damage_amount
 	# 记录起始位置和计算总距离
 	start_position = global_position
 	previous_position = global_position

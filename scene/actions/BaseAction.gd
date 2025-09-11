@@ -18,6 +18,9 @@ var on_action_finished: Callable
 var can_cancel:bool = false
 var move_history := []
 
+var damage_amount:int
+
+
 func _ready() -> void:
 	unit = owner
 
@@ -94,13 +97,26 @@ func is_obstacle(grid_position:Vector2i) -> bool:#判断网格是否障碍物
 		return false
 	return not GridManager.is_grid_walkable(grid_position)
 
-
+func predict_damage(target: Unit) -> int:
+	return 0  # 子类覆盖
 
 func is_occupied_by_allay(grid_position:Vector2i) -> bool:#判断该网格否被队友占据
-	if not  GridManager.is_grid_occupied(grid_position):
+	#if not  GridManager.is_grid_occupied(grid_position):
+		#return false
+	#return GridManager.get_grid_occupied(grid_position).is_enemy == unit.is_enemy
+	if not GridManager.is_grid_occupied(grid_position):
 		return false
-	return GridManager.get_grid_occupied(grid_position).is_enemy == unit.is_enemy
-	
+	var occupant :Unit= GridManager.get_grid_occupied(grid_position)
+	if occupant == null:
+		return false
+	# 要求 unit 有 faction 属性
+	if unit != null and occupant.faction == unit.faction:
+		return true
+	# 向后兼容：若没 faction 则使用 is_enemy 布尔比较（旧逻辑）
+	if occupant.is_enemy == unit.is_enemy:
+		return true
+		
+	return false
 
 func hit_obstacle(starting_grid:Vector2i,ending_grid:Vector2i) -> bool:#判断路线(数组中是否有碰撞物）是否有障碍物
 	var starting_position: Vector2 = GridManager.get_world_position(starting_grid)
@@ -109,4 +125,9 @@ func hit_obstacle(starting_grid:Vector2i,ending_grid:Vector2i) -> bool:#判断�
 	var result = get_tree().root.world_2d.direct_space_state.intersect_ray(query_parameters)
 	return not result.is_empty()
 
-	
+
+
+# 真正执行，结算伤害/位移
+func execute(intent: AIActionData, on_finished: Callable) -> void:
+	# 默认实现直接调用 start_action
+	start_action(intent.target_grid, on_finished)	

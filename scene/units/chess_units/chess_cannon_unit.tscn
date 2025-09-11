@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://buanjqllbrtln"]
+
+[ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_mvii5"]
+[ext_resource type="SpriteFrames" uid="uid://d2vvcat3ye5st" path="res://resources/animations/chess_animations/chess_cannon_unit.tres" id="2_4dayu"]
+[ext_resource type="PackedScene" uid="uid://cl8j5s3eevxri" path="res://scene/actions/chess_move_action.tscn" id="2_ebs8w"]
+
+[node name="Chess_Cannon_Unit" instance=ExtResource("1_mvii5")]
+faction = 3
+is_chess_piece = true
+chess_side = "red"
+action_points = 1
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_4dayu")
+animation = &"attack"
+
+[node name="ChessMoveAction" parent="ActionsManager" index="0" instance=ExtResource("2_ebs8w")]
+chess_type = "cannon"

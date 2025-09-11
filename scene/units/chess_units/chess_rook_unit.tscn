@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://cg3gb0hjb8y7r"]
+
+[ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_5lrgo"]
+
+[node name="Chess_rook_Unit" instance=ExtResource("1_5lrgo")]
