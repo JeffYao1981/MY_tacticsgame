@@ -44,7 +44,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	if is_launched and current_state != null:
 		current_state.on_state_physics_update(delta)
-
+		
+		
+		
+####################################################################################
 func change_state(new_state_name:String) -> void:
 	if not states.has(new_state_name):
 		push_warning("StateMachine: state not found: %s" % new_state_name)
@@ -54,9 +57,20 @@ func change_state(new_state_name:String) -> void:
 		current_state.on_state_exit()
 
 	current_state = states[new_state_name]
-	current_state.on_state_enter()
-	current_state.on_state_movie()
-		
+	
+	#current_state.on_state_movie()
+	
+	current_state.on_state_movie()	
+####################################################################################	
+
+
+
+
+
+
+
+
+
 func on_state_changed(state_name:String) -> void:
 	change_state(state_name)
 	

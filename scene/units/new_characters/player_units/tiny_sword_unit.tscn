@@ -537,6 +537,7 @@ stream_2/stream = ExtResource("11_qnhnx")
 [node name="TinySwordWarriorUnit" type="Node2D"]
 z_index = 1
 script = ExtResource("1_6he8p")
+unit_name = "big_knight"
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, 0)

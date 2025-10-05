@@ -16,3 +16,4 @@ animation = &"attack"
 
 [node name="ChessMoveAction" parent="ActionsManager" index="0" instance=ExtResource("2_ebs8w")]
 chess_type = "cannon"
+action_id = "move_action"

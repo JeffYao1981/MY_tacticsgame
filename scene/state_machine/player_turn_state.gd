@@ -2,24 +2,25 @@ extends BaseState
 
 
 
-var listen_for_input: bool = false
-var go_to_enemy_execute: bool = false
+
+
 
 
 func on_state_enter() -> void:
-	
-	
-	TurnManager.enemy_execute_started.connect(on_enemy_execute_started)
+	TurnManager.玩家回合发射信号()
+	TurnManager.敌人攻击回合.connect(on_enemy_execute_started)
 	listen_for_input = true
-	go_to_enemy_execute = false
+	go_to_next_turn = false
 
 func on_state_frame_update(delta:float) -> void:
 	if go_to_next_turn:
 		change_state("EnemyExecuteState")
 	
 func on_state_exit() -> void:
-	TurnManager.enemy_execute_started.disconnect(on_enemy_execute_started)
+	TurnManager.敌人攻击回合.disconnect(on_enemy_execute_started)
+	
 	listen_for_input = false
+	print("我已经触发了，目前输入监听为：",listen_for_input)
 
 func _unhandled_input(event: InputEvent) -> void:
 	if not listen_for_input :
@@ -40,5 +41,5 @@ func on_enemy_execute_started() -> void:
 	# 如果玩家还在执行动作，不强行切换
 	if PlayerActionManager.is_performing_action:
 		return
-	go_to_enemy_execute = true	
+	go_to_next_turn = true	
 	

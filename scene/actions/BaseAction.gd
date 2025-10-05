@@ -17,8 +17,8 @@ var is_active: bool = false #是否正在执行
 var on_action_finished: Callable
 var can_cancel:bool = false
 var move_history := []
-
-var damage_amount:int
+var action_intent :AIActionData
+@export var damage_amount:int
 
 
 func _ready() -> void:
@@ -26,6 +26,9 @@ func _ready() -> void:
 
 	
 func set_range_icon() -> void:
+	if unit.is_chess_piece:
+		return
+	
 	range_show = null
 	for child in get_children():
 		if child is AnimatedSprite2D:
@@ -37,10 +40,10 @@ func set_range_icon() -> void:
 		
 	range_show.z_index = 5
 	
-	if range_show == null:
-		print("我是空值")
-	if unit.animated_sprite_range_show == null:
-		print("角色的动画也是空值")
+	#if range_show == null:
+		#print("我是空值")
+	#if unit.animated_sprite_range_show == null:
+		#print("角色的动画也是空值")
 	
 	
 	
@@ -53,6 +56,7 @@ func start_action(target_grid_position:Vector2i,on_action_finished:Callable) ->v
 		"action_point_cost": action_point_cost,
 		"action_performed": false  # 攻击或不可撤销动作时设置 true
 	})
+	
 	self.on_action_finished = on_action_finished
 	unit.current_action_points -= action_point_cost
 	GridManager.visual_layer.clear()
@@ -81,12 +85,13 @@ func cancel_action()->void:
 func finish_action() ->void:
 	is_active = false	
 	on_action_finished.call()
-	if unit.current_action_points >= action_point_cost :
+	if unit.current_action_points >= action_point_cost and !unit.is_enemy :
 		GridManager.visualize_grids(PlayerActionManager.selected_action.get_action_grids(),PlayerActionManager.selected_action.grid_color)
 		PlayerActionManager.range_box_switch = true
 		add_action_card.emit()
-	#elif :
-	
+	if unit.is_enemy:
+		print(self.action_name,"清理UI")
+		EnemyIntentVisualizer.on_intent_executed(action_intent)
 		
 func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i]:
 	return []
@@ -98,7 +103,8 @@ func is_obstacle(grid_position:Vector2i) -> bool:#判断网格是否障碍物
 	return not GridManager.is_grid_walkable(grid_position)
 
 func predict_damage(target: Unit) -> int:
-	return 0  # 子类覆盖
+	
+	return damage_amount
 
 func is_occupied_by_allay(grid_position:Vector2i) -> bool:#判断该网格否被队友占据
 	#if not  GridManager.is_grid_occupied(grid_position):
@@ -130,4 +136,4 @@ func hit_obstacle(starting_grid:Vector2i,ending_grid:Vector2i) -> bool:#判断�
 # 真正执行，结算伤害/位移
 func execute(intent: AIActionData, on_finished: Callable) -> void:
 	# 默认实现直接调用 start_action
-	start_action(intent.target_grid, on_finished)	
+	start_action(intent.grid_position, on_finished)	

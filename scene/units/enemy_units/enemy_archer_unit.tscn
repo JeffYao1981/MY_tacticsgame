@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_l3kng"]
 [ext_resource type="SpriteFrames" uid="uid://bssspw8a14jrc" path="res://resources/animations/enemy_animations/enemy_archer_animation.tres" id="2_yt8mq"]
 [ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="4_uhwqx"]
-[ext_resource type="Script" uid="uid://dnk8a053ogdt5" path="res://scene/units/enemy_units/archer_enemy_ai.gd" id="5_xumo1"]
+[ext_resource type="PackedScene" uid="uid://cgufrsy0kgflf" path="res://enemy_ai/enemy_ai.tscn" id="5_xumo1"]
 [ext_resource type="PackedScene" uid="uid://doj66q6m8rpx5" path="res://scene/actions/bow_action.tscn" id="6_uhwqx"]
 
 [node name="EnemyArcherUnit" instance=ExtResource("1_l3kng")]
@@ -17,7 +17,4 @@ sprite_frames = ExtResource("2_yt8mq")
 
 [node name="BowAction" parent="ActionsManager" index="1" instance=ExtResource("6_uhwqx")]
 
-[node name="EnemyAI" type="Node" parent="." index="7" node_paths=PackedStringArray("unit")]
-script = ExtResource("5_xumo1")
-unit = NodePath("..")
-metadata/_custom_type_script = "uid://dvo00rplx2nh8"
+[node name="EnemyAI" parent="." index="7" instance=ExtResource("5_xumo1")]

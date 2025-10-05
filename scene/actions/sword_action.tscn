@@ -40,6 +40,7 @@ action_name = "Sword"
 grid_color = Color(0.738119, 0.285517, 0.147214, 1)
 range_show = NodePath("Sprite2D")
 action_icon = ExtResource("5_ndgpm")
+damage_amount = 5
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

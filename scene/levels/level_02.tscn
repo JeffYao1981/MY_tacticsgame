@@ -28,6 +28,9 @@ tile_map_data = PackedByteArray("AAD//wMAAQAAAAAAAAD//wQAAQAAAAAAAAD//wUAAQAAAAA
 [node name="VisualLayer" parent="Map" index="5"]
 position = Vector2(0, 0)
 
+[node name="Sprite2D" parent="Map" index="6"]
+visible = true
+
 [node name="Camera2D" parent="GridIndicator" index="3"]
 limit_left = -192
 limit_top = -128

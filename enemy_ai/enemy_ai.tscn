@@ -1,6 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://cgufrsy0kgflf"]
 
-[ext_resource type="Script" uid="uid://dvo00rplx2nh8" path="res://enemy_ai/enemy_ai.gd" id="1_nm3mo"]
+[ext_resource type="Script" uid="uid://dnk8a053ogdt5" path="res://scene/units/enemy_units/archer_enemy_ai.gd" id="1_nm3mo"]
 
-[node name="EnemyAI" type="Node"]
+[node name="EnemyAI" type="Node" node_paths=PackedStringArray("unit")]
 script = ExtResource("1_nm3mo")
+unit = NodePath("")
+metadata/_custom_type_script = "uid://dvo00rplx2nh8"

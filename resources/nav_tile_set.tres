@@ -1,7 +1,8 @@
-[gd_resource type="TileSet" load_steps=5 format=3 uid="uid://dvnjfw8hq54dq"]
+[gd_resource type="TileSet" load_steps=7 format=3 uid="uid://dvnjfw8hq54dq"]
 
 [ext_resource type="Texture2D" uid="uid://pab5k6hc0uho" path="res://assets/grids/NaviData_32.png" id="1_jfmu7"]
 [ext_resource type="Texture2D" uid="uid://b1e4pqckhk7o3" path="res://assets/grids/NaviData_wall.png" id="1_ogqkd"]
+[ext_resource type="Texture2D" uid="uid://bxl4fc2psmmk4" path="res://assets/isom/spritesheet.png" id="3_lva6h"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lva6h"]
 texture = ExtResource("1_ogqkd")
@@ -91,6 +92,10 @@ texture_region_size = Vector2i(32, 32)
 1:0/0 = 0
 1:0/0/custom_data_0 = true
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ed3e6"]
+texture = ExtResource("3_lva6h")
+texture_region_size = Vector2i(32, 32)
+
 [resource]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 2
@@ -109,3 +114,4 @@ custom_data_layer_4/name = "wall_west"
 custom_data_layer_4/type = 1
 sources/1 = SubResource("TileSetAtlasSource_ogqkd")
 sources/0 = SubResource("TileSetAtlasSource_lva6h")
+sources/3 = SubResource("TileSetAtlasSource_ed3e6")

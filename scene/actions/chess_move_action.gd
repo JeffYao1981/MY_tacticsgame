@@ -21,7 +21,7 @@ func get_action_grids(unit_grid:Vector2i = unit.grid_position) -> Array[Vector2i
 
 # 车：直线走到碰到阻挡（可吃敌方的第一个阻挡点）
 func _get_rook_moves(start_grid: Vector2i) -> Array[Vector2i]:
-	var res: Array = []
+	var res: Array[Vector2i] = []
 	var dirs := [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
 	for d in dirs:
 		var pos := start_grid
@@ -41,7 +41,7 @@ func _get_rook_moves(start_grid: Vector2i) -> Array[Vector2i]:
 
 # 炮：普通移动（空格）与吃子规则：必须隔一个子（跳子）才能吃目标
 func _get_cannon_moves(start_grid: Vector2i) -> Array[Vector2i]:
-	var res: Array = []
+	var res: Array[Vector2i] = []
 	var dirs := [Vector2i(1,0), Vector2i(-1,0), Vector2i(0,1), Vector2i(0,-1)]
 	for d in dirs:
 		var pos := start_grid
@@ -78,7 +78,7 @@ func _get_cannon_moves(start_grid: Vector2i) -> Array[Vector2i]:
 	return res
 
 # 重写 start_action，保留 BaseAction 的消耗/回调逻辑，并做移动动画
-func start_action(target_grid_position: Vector2i, on_action_finished: Callable) -> void:
+func start_action(target_grid_position: Vector2i, on_action_finished: Callable,intent:AIActionData = null) -> void:
 	# 调用 BaseAction.start_action (注意 GDScript 中调用父类方法)
 	super.start_action(target_grid_position, on_action_finished)
 

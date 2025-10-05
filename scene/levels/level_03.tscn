@@ -50,7 +50,7 @@ tile_map_data = PackedByteArray("AAD//wMAAQAAAAAAAAD//wQAAQAAAAAAAAD//wUAAQAAAAA
 [node name="VisualLayer" parent="Map" index="9"]
 position = Vector2(0, 0)
 
-[node name="GridIndicator" parent="." index="2"]
+[node name="GridIndicator" parent="." index="3"]
 position = Vector2(176, 336)
 
 [node name="Camera2D" parent="GridIndicator" index="3"]

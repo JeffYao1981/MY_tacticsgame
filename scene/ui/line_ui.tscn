@@ -1,0 +1,34 @@
+[gd_scene load_steps=5 format=3 uid="uid://cmvmok5jc23jo"]
+
+[ext_resource type="Shader" uid="uid://ctd877pu535bf" path="res://shader/line.gdshader" id="1_6qawq"]
+[ext_resource type="Texture2D" uid="uid://b0o04awoc76uq" path="res://assets/ui/arrow.png" id="2_y566t"]
+
+[sub_resource type="Environment" id="Environment_w4bu0"]
+background_mode = 3
+glow_enabled = true
+glow_intensity = 0.36
+glow_strength = 1.59
+glow_hdr_threshold = 1.14
+glow_hdr_scale = 1.48
+glow_map_strength = 0.67
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_l1mnt"]
+shader = ExtResource("1_6qawq")
+shader_parameter/speed = 1.0
+
+[node name="LineUI" type="Node2D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_w4bu0")
+
+[node name="Line2D" type="Line2D" parent="."]
+texture_filter = 1
+texture_repeat = 2
+material = SubResource("ShaderMaterial_l1mnt")
+position = Vector2(-2, 0)
+points = PackedVector2Array(71, 129)
+width = 3.0
+default_color = Color(0.965271, 0.686641, 0.438886, 1)
+texture = ExtResource("2_y566t")
+texture_mode = 1
+joint_mode = 1

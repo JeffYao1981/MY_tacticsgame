@@ -33,6 +33,7 @@ action_name = "Bow"
 grid_color = Color(0.809523, 0.809524, 0, 1)
 range_show = NodePath("Sprite2D")
 action_icon = ExtResource("3_jqpgm")
+damage_amount = 5
 metadata/_custom_type_script = "uid://cnb3hk8cwpymp"
 
 [node name="Sprite2D" type="AnimatedSprite2D" parent="."]

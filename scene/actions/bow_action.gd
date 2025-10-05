@@ -39,3 +39,8 @@ func is_valid_action_grid(unit_grid:Vector2i,grid_position: Vector2i) -> bool:
 	if hit_obstacle(unit_grid,grid_position):
 		return false
 	return true
+
+func predict_damage(target: Unit) -> int:
+	# 魔法可能不受防御影响
+	
+	return damage_amount

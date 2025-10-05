@@ -1,5 +1,15 @@
-[gd_scene load_steps=2 format=3 uid="uid://cg3gb0hjb8y7r"]
+[gd_scene load_steps=4 format=3 uid="uid://cg3gb0hjb8y7r"]
 
 [ext_resource type="PackedScene" uid="uid://c4v4omxy7xpxw" path="res://scene/units/unit.tscn" id="1_5lrgo"]
+[ext_resource type="PackedScene" uid="uid://cl8j5s3eevxri" path="res://scene/actions/chess_move_action.tscn" id="2_77igu"]
+[ext_resource type="SpriteFrames" uid="uid://bu35nsy340uy4" path="res://scene/units/chess_units/chess_rook_unit.tres" id="2_xrch0"]
 
 [node name="Chess_rook_Unit" instance=ExtResource("1_5lrgo")]
+
+[node name="AnimatedSprite2D" parent="." index="0"]
+sprite_frames = ExtResource("2_xrch0")
+animation = &"idle"
+frame_progress = 0.727828
+
+[node name="ChessMoveAction" parent="ActionsManager" index="0" instance=ExtResource("2_77igu")]
+action_id = "move_action"

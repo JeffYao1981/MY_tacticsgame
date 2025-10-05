@@ -1,5 +1,8 @@
 extends Node2D
 class_name Unit
+@export var unit_name:String
+
+
 
 signal unit_died(unit:Unit)
 signal action_point_changed(action_point: int)
@@ -18,6 +21,8 @@ signal action_point_changed(action_point: int)
 #声音
 @onready var unit_hit_sound_player: AudioStreamPlayer = $Sound/UnitHitSoundPlayer
 @onready var unit_dead_sound_player: AudioStreamPlayer = $Sound/UnitDeadSoundPlayer
+
+#action集
 @onready var actions_manager: ActionManager = $ActionsManager
 
 
@@ -25,6 +30,7 @@ signal action_point_changed(action_point: int)
 enum Faction { Player, Enemy, Red, Black, Neutral }
 @export var faction: int = Faction.Player
 @export var is_enemy : bool = false  #可以做成枚举，添加中立单位
+
 
 
 
@@ -74,14 +80,11 @@ func _ready() -> void:
 	current_hp = max_hp
 	current_action_points = action_points
 	
-	TurnManager.player_turn_started.connect(on_player_turn_started)
-	TurnManager.enemy_turn_started.connect(on_enemy_turn_started)
+	TurnManager.玩家回合.connect(on_player_turn_started)
+	TurnManager.敌人意图回合.connect(on_enemy_turn_started)
 	# 新信号
-	if TurnManager.has_method("connect"):
-		if TurnManager.has_signal("red_turn_started"):
-			TurnManager.red_turn_started.connect(on_red_turn_started)
-		if TurnManager.has_signal("black_turn_started"):
-			TurnManager.black_turn_started.connect(on_black_turn_started)
+	TurnManager.红棋行动.connect(on_red_turn_started)
+	TurnManager.黑棋行动.connect(on_black_turn_started)
 	
 	# 点击选择
 	unit_area.unit_selected.connect(on_unit_selected)
@@ -89,10 +92,7 @@ func _ready() -> void:
 	health.health_changed.connect(on_health_changed)
 	# 注册进 GameManager
 	GameManager.register_unit(self)
-	if is_chess_piece:
-		var is_red := chess_side.to_lower() == "red" or faction == Faction.Red
-		
-		ChessAiManager.register_unit(self, is_red)
+	
 			
 				
 func on_unit_selected() ->void:

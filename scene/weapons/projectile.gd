@@ -44,7 +44,7 @@ var target_grid_position: Vector2i
 var target_world_position: Vector2
 
 @export var impact_effect_scene: PackedScene
-@export var damage_amount: int = 5
+var damage_amount:int
 @export var speed: int = 200
 @export var arc_height: float = 20.0  # 弧线高度
 
@@ -60,7 +60,11 @@ func set_up(finish_action: Callable, unit: Unit, target_grid_position: Vector2i)
 	self.unit = unit
 	self.target_grid_position = target_grid_position
 	target_world_position = GridManager.get_world_position(target_grid_position)
-	PlayerActionManager.selected_action.damage_amount = damage_amount
+	if unit.is_enemy:
+		
+		damage_amount = EnemyIntentVisualizer.selected_action.damage_amount	
+	else :
+		damage_amount = PlayerActionManager.selected_action.damage_amount
 	# 记录起始位置和计算总距离
 	start_position = global_position
 	previous_position = global_position

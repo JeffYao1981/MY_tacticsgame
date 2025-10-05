@@ -20,9 +20,10 @@ func _ready() -> void:
 		GridManager.nav_layer.a_star.set_point_solid(unit.grid_position)
 	
 	#设置默认被选中的unit
-	if not GameManager.player_units.is_empty():
-		var unit:Unit = GameManager.player_units[0]
-		
+	#if not GameManager.player_units.is_empty():
+		#var unit:Unit = GameManager.player_units[0]
+		#print("--------------------------------",unit.unit_name,"-----------------------------------------------")
+		#PlayerActionManager.set_selected_unit(unit)
 	
 	state_machine.launch_state_machine()
 

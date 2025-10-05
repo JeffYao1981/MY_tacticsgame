@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c1t6h05nlcan4" path="res://scene/actions/move_action.tscn" id="3_vxrth"]
 
 [node name="ArcherUnit" instance=ExtResource("1_upauq")]
+unit_name = "tiny_archer"
 
 [node name="AnimatedSprite2D" parent="." index="0"]
 sprite_frames = ExtResource("2_b2rvr")

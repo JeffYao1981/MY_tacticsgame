@@ -19,13 +19,17 @@ func register_unit(unit:Unit) -> void:
 	if unit.is_chess_piece:
 		if unit.is_enemy :
 			chess_piece_black.append(unit)
+			print("已经加入敌方棋子：",unit.unit_name)
 		else :
 			chess_piece_red.append(unit)
+			print("已经加入友方棋子：",unit.unit_name)
 	else :
 		if unit.is_enemy:
 			enemy_units.append(unit)
+			print("已经加入敌方角色：",unit.unit_name)
 		else :
 			player_units.append(unit)
+			print("已经加入友方角色：",unit.unit_name)
 				
 	unit.unit_died.connect(on_unit_died)
 	all_units.append(unit)

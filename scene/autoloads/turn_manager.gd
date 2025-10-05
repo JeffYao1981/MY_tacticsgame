@@ -1,11 +1,11 @@
 extends Node
 
 # 新的细分回合信号（保留 player_turn_started / enemy_turn_started 兼容）
-signal enemy_intent_started
-signal player_turn_started
-signal enemy_execute_started
-signal red_turn_started
-signal black_turn_started
+signal 敌人意图回合
+signal 玩家回合
+signal 敌人攻击回合
+signal 红棋行动
+signal 黑棋行动
 
 # 向后兼容
 signal enemy_turn_started
@@ -13,26 +13,26 @@ signal enemy_turn_started
 @onready var state_machine: StateMachine
 
 
-func start_enemy_intent() -> void:
-	enemy_intent_started.emit()
+func 敌人意图回合发射信号() -> void:
+	敌人意图回合.emit()
 	
 
-func start_player_turn() ->void:
-	player_turn_started.emit()
+func 玩家回合发射信号() ->void:
+	玩家回合.emit()
 	
 func start_enemy_turn() ->void:
 	enemy_turn_started.emit()
 	# 同时触发新的 execute 阶段（默认行为）
-	start_enemy_execute()
+	敌人攻击回合发射信号()
 
-func start_enemy_execute() -> void:
-	enemy_execute_started.emit()
+func 敌人攻击回合发射信号() -> void:
+	敌人攻击回合.emit()
 
-func start_red_turn() -> void:
-	red_turn_started.emit()
+func 红棋行动回合发射信号() -> void:
+	红棋行动.emit()
 
-func start_black_turn() -> void:
-	black_turn_started.emit()
+func 黑棋行动回合发射信号() -> void:
+	黑棋行动.emit()
 
 func is_player_turn() -> bool:
 	return state_machine.current_state.state_name == "PlayerTurnState"

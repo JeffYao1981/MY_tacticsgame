@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://bea8cf5degeby" path="res://scene/actions/sword_action.tscn" id="3_3vyws"]
 
 [node name="KnightUnit" instance=ExtResource("1_nejob")]
+unit_name = "tiny_knight"
 
 [node name="MoveAction" parent="ActionsManager" index="0" instance=ExtResource("2_3vyws")]
 

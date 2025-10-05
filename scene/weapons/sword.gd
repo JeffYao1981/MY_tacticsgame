@@ -6,12 +6,18 @@ class_name Sword
 
 var finish_action:Callable
 var unit:Unit
-var damager_amount:int = 5
+var damager_amount:int
 var target: Unit
 
 func set_up(finish_action:Callable,unit:Unit,target_grid_position:Vector2i) ->void:
 	self.finish_action = finish_action
 	self.unit = unit
+	if unit.is_enemy:
+		
+		damager_amount = EnemyIntentVisualizer.selected_action.damage_amount	
+	else :
+		damager_amount = PlayerActionManager.selected_action.damage_amount
+		
 	target = GridManager.get_grid_occupied(target_grid_position)
 	if target_grid_position.y > unit.grid_position.y:
 		rotation_degrees = 180

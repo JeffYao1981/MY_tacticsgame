@@ -17,15 +17,10 @@ func set_selected_unit(unit:Unit) ->void:
 		return
 	if selected_unit == unit or unit.is_enemy:
 		return
-	#if selected_unit:#这里判断UI的隐藏和显示
-		#selected_unit.unit_actions_ui.visible = false
-		#var action_card = selected_unit.unit_actions_ui.action_container
-		#for card_ui in action_card.get_children():
-			#card_ui.animation_player.play("button_in")
-			#print("UI来了")
+	if unit.is_chess_piece:
+		return
+	
 	selected_unit = unit
-	
-	
 	print(unit.name + "selected")
 	unit_selected.emit(selected_unit)
 	set_selected_action(unit.actions_manager.get_action("move_action"))#选择角色后默认选择的action
@@ -135,7 +130,7 @@ func try_cancel_selected_action() -> bool:#回滚操作
 		show_message("没有选中的动作")
 		return false
 	if not selected_action.can_cancel:
-		print("can_cancel:",selected_action.can_cancel)
+		
 		show_message("该动作不可撤销")
 		return false
 	if selected_action.move_history.is_empty():
